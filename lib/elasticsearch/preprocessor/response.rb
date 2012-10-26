@@ -106,14 +106,12 @@ module Elasticsearch
 
       # Log this response
       #
-      # @return [self]
+      # @return [undefined]
       #
       # @api private
       #
       def log
         logger.debug("#{status}")
-
-        self
       end
     end
   end
