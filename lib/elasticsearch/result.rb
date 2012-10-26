@@ -19,7 +19,7 @@ module Elasticsearch
     # @api private
     #
     def hits
-      Hits.new(@data.fetch('hits'))
+      HitSet.new(@data.fetch('hits'))
     end
     memoize :hits
 
