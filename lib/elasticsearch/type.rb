@@ -1,7 +1,7 @@
 module Elasticsearch
   # Driver for specific elasticsearch type
   class Type
-    include Adamantium
+    include Adamantium::Flat
 
     # Initialize object
     #

@@ -1,7 +1,7 @@
 module Elasticsearch
   # Connection to elasticsearch
   class Connection
-    include Adamantium
+    include Adamantium::Flat
 
     # Return index with name
     #

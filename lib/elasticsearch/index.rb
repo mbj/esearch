@@ -1,7 +1,7 @@
 module Elasticsearch
   # Driver for specific index
   class Index
-    include Adamantium
+    include Adamantium::Flat
 
     # Return name of index
     #

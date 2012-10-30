@@ -1,6 +1,6 @@
 module Elasticsearch
   class Result
-    include Adamantium, Enumerable
+    include Adamantium::Flat, Enumerable
 
     # Return facets
     #

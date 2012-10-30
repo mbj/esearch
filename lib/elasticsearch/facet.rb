@@ -1,7 +1,7 @@
 module Elasticsearch
   # A specific facet in a result 
   class Facet
-    include Adamantium, Enumerable, Equalizer.new(:name, :to_a)
+    include Adamantium::Flat, Enumerable, Equalizer.new(:name, :to_a)
 
     attr_reader :name
 

@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Abstract base class for facet types
     class Type
-      include Adamantium, AbstractClass
+      include Adamantium::Flat, AbstractClass
       extend DescendantsTracker
 
       def self.field_name

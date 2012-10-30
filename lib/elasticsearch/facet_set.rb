@@ -2,7 +2,7 @@ module Elasticsearch
 
   # Set of facets in results
   class FacetSet
-    include Enumerable, Adamantium, Equalizer.new(:to_a)
+    include Enumerable, Adamantium::Flat, Equalizer.new(:to_a)
 
     # Enumerate facets
     #

@@ -2,7 +2,7 @@ module Elasticsearch
 
   # Faraday middleware for elasticsearch http connections
   class Middleware
-    include Adamantium
+    include Adamantium::Flat
 
     # Middleware call from faraday
     #

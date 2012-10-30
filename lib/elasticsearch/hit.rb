@@ -1,6 +1,6 @@
 module Elasticsearch
   class Hit
-    include Adamantium
+    include Adamantium::Flat
 
     attr_reader :document
     private :document

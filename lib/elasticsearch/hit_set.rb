@@ -1,6 +1,6 @@
 module Elasticsearch
   class HitSet
-    include Adamantium, Enumerable
+    include Adamantium::Flat, Enumerable
 
     attr_reader :data
     private :data
