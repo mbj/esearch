@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Elasticsearch::Driver,'#refresh' do
+describe Elasticsearch::Connection,'#refresh' do
   let(:object)     { described_class.new(uri,options) }
   let(:uri)        { 'http://example.com:9200' }
   let(:options)    { { :adapter => [:test,adapter] } }
@@ -37,7 +37,7 @@ describe Elasticsearch::Driver,'#refresh' do
       let(:status) { 500 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'{}')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError, '{}')
       end
     end
   end
@@ -62,7 +62,7 @@ describe Elasticsearch::Driver,'#refresh' do
       let(:status) { 500 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'{}')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError, '{}')
       end
     end
   end

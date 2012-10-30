@@ -22,7 +22,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
   let(:body) { '{"foo":"bar"}' }
   let(:method) { :get }
 
-  let(:logger) { ::Elasticsearch::NullLogger }
+  let(:logger) { Elasticsearch::NullLogger }
 
   let(:status) { 200 }
   let(:response_headers) { { 'content-type' => content_type } }
@@ -42,7 +42,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
       let(:content_type) { 'text/plain' }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::ProtocolError,'Expected json content type but got: "text/plain"')
+        expect { subject }.to raise_error(Elasticsearch::ProtocolError,'Expected json content type but got: "text/plain"')
       end
     end
   end
@@ -57,7 +57,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
       let(:status) { 201 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'error')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError,'error')
       end
     end
 
@@ -78,7 +78,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
       let(:status) { 200 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'error')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError,'error')
       end
     end
 
@@ -105,7 +105,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
       let(:status) { 404 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'{"foo":"bar"}')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError,'{"foo":"bar"}')
       end
     end
   end

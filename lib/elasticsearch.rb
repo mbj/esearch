@@ -7,6 +7,7 @@ require 'descendants_tracker'
 # Library namespace
 module Elasticsearch
   class RemoteError < StandardError; end
+  class ProtocolError < StandardError; end
 end
 
 require 'elasticsearch/connection'

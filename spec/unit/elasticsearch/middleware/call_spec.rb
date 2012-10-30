@@ -22,9 +22,9 @@ describe Elasticsearch::Middleware,'#call' do
   end
 
   context 'when logger is NOT present in arguments' do
-    it 'should NOT store logger in env' do
+    it 'should NOT store default logger in env' do
       subject
-      env.should == {}
+      env.should == { :logger => Elasticsearch::NullLogger }
     end
   end
 

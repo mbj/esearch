@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Elasticsearch::Driver,'#exist?' do
+describe Elasticsearch::Connection,'#exist?' do
   let(:object)     { described_class.new(uri,options) }
   let(:name)       { 'test' }
   let(:uri)        { 'http://example.com:9200' }
@@ -38,7 +38,7 @@ describe Elasticsearch::Driver,'#exist?' do
       let(:status) { 500 }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Adapter::Elasticsearch::RemoteError,'{}')
+        expect { subject }.to raise_error(Elasticsearch::RemoteError,'{}')
       end
     end
   end

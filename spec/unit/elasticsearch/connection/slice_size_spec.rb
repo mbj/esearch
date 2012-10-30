@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Elasticsearch::Driver,'#slice_size' do
+describe Elasticsearch::Connection,'#slice_size' do
   subject { object.slice_size }
 
   let(:object)  { described_class.new(uri,options) }

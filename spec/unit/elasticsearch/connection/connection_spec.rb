@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Elasticsearch::Driver,'#connection' do
+describe Elasticsearch::Connection,'#connection' do
   subject { object.connection }
 
   let(:object)  { described_class.new(uri,options) }
