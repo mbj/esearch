@@ -81,12 +81,10 @@ module Elasticsearch
         def term
           @document.fetch('term')
         end
-        memoize :term
 
         def count
           @document.fetch('count')
         end
-        memoize :term
       end
     end
   end
