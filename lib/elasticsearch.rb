@@ -13,6 +13,8 @@ end
 require 'elasticsearch/connection'
 require 'elasticsearch/result'
 require 'elasticsearch/index'
+require 'elasticsearch/operation'
+require 'elasticsearch/bulk'
 require 'elasticsearch/preprocessor'
 require 'elasticsearch/preprocessor/response'
 require 'elasticsearch/preprocessor/request'

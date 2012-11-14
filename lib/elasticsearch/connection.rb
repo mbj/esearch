@@ -95,6 +95,18 @@ module Elasticsearch
       end.status == 200
     end
 
+    # Perform bulk operation
+    #
+    # @param [Bulk]
+    # @param [Path]
+    #
+    def bulk(bulk, path = nil)
+      connection.post("#{path}/_bulk") do |request|
+        p bulk
+        request.body = bulk.body
+      end
+    end
+
     # Trigger refresh on index
     #
     # This syncs the latest write operations.

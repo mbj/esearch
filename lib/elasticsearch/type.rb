@@ -3,20 +3,34 @@ module Elasticsearch
   class Type
     include Adamantium::Flat
 
-    # Initialize object
+    # Return index
     #
-    # @param [Adapter::Elasticsearch::Index] index
-    # @param [String] name
-    #
-    # @return [undefined]
+    # @return [Index]
     #
     # @api private
     #
-    def initialize(index, name)
-      @index, @name = index, name
-    end
+    attr_reader :index
+    
+    # Return name
+    #
+    # @return [String]
+    #
+    # @api private
+    #
+    attr_reader :name
 
-    attr_reader :index, :name
+    # Batch create documents
+    #
+    # @param [Enumerable<Hash>] documents
+    #
+    # @return [self]
+    #
+    # @api private
+    #
+    def bulk(bulk)
+      index.bulk(bulk, name)
+      self
+    end
 
     # Create document 
     #
@@ -73,5 +87,21 @@ module Elasticsearch
 
       self
     end
+
+  private
+
+    # Initialize object
+    #
+    # @param [Adapter::Elasticsearch::Index] index
+    # @param [String] name
+    #
+    # @return [undefined]
+    #
+    # @api private
+    #
+    def initialize(index, name)
+      @index, @name = index, name
+    end
+
   end
 end
