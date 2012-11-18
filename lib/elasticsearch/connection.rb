@@ -1,7 +1,15 @@
 module Elasticsearch
   # Connection to elasticsearch
   class Connection
-    include Adamantium::Flat
+    include Adamantium::Flat, Equalizer.new(:uri)
+
+    # Return uri
+    #
+    # @return [String]
+    #
+    # @api private
+    #
+    attr_reader :uri
 
     # Return index with name
     #

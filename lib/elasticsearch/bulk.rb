@@ -1,7 +1,7 @@
 module Elasticsearch
   # Bulk operation
   class Bulk
-    include Adamantium::Flat
+    include Adamantium::Flat, Equalizer.new(:operations)
 
     # Return operations
     #

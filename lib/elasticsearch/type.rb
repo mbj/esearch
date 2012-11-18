@@ -1,7 +1,7 @@
 module Elasticsearch
   # Driver for specific elasticsearch type
   class Type
-    include Adamantium::Flat
+    include Adamantium::Flat, Equalizer.new(:index, :name)
 
     # Return index
     #
