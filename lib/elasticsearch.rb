@@ -3,6 +3,7 @@ require 'faraday'
 require 'adamantium'
 require 'equalizer'
 require 'descendants_tracker'
+require 'abstract_class'
 
 # Library namespace
 module Elasticsearch
