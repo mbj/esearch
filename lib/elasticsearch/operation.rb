@@ -1,16 +1,20 @@
 module Elasticsearch
+  # Abstract base class for operations
   class Operation
-    include Adamantium::Flat
+    include Adamantium::Flat, AbstractClass
 
-    class Create < self
+    # Abstract base class for nullary operations
+    class Nullary < self
       def initialize(document)
         @document = document
       end
-    end
 
-    class Update < self
-      def initialize(document)
-        @document = document
+      # Create operation
+      class Create < self
+      end
+
+      # Update operation
+      class Update < self
       end
     end
   end

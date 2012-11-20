@@ -32,6 +32,29 @@ module Elasticsearch
       self
     end
 
+    # Get document
+    #
+    # @param [String] id
+    #
+    # @return [Hash]
+    #   if present
+    #
+    # @return [nil]
+    #   otherwise
+    #
+    # @api private
+    #
+    def get(id)
+      response = pure_connection.get("#{index.name}/#{name}/#{id}") do |request|
+        request.options[:expect_status] = [200, 404]
+        request.options[:convert_json] = true
+      end
+
+      if response.status == 200
+        return response.body
+      end
+    end
+
     # Create document 
     #
     # @param [String] id
@@ -42,7 +65,9 @@ module Elasticsearch
     # @api private
     #
     def create(id, document)
-      index.connection.connection.post("#{index.name}/#{name}/#{id}?op_type=create") do |request|
+      index = self.index
+
+      pure_connection.post("#{index.name}/#{name}/#{id}?op_type=create") do |request|
         request.options[:expect_status]=201
         request.options[:convert_json]=201
         request.body = document
@@ -61,7 +86,9 @@ module Elasticsearch
     # @api private
     #
     def update(id, document)
-      index.connection.connection.post("#{index.name}/#{name}/#{id}?op_type=index") do |request|
+      index = self.index
+
+      pure_connection.post("#{index.name}/#{name}/#{id}?op_type=index") do |request|
         request.options[:expect_status]=200
         request.options[:convert_json]=200
         request.body = document
@@ -80,7 +107,7 @@ module Elasticsearch
     # @api private
     #
     def delete(id)
-      index.connection.connection.delete("#{index.name}/#{name}/#{id}") do |request|
+      pure_connection.delete("#{index.name}/#{name}/#{id}") do |request|
         request.options[:expect_status]=200
         request.options[:convert_json]=200
       end
@@ -89,6 +116,18 @@ module Elasticsearch
     end
 
   private
+
+    # Return pure connection
+    #
+    # TODO: This will be resovled when we have operations, it is a misdesign
+    #
+    # @return [Faraday::Connection]
+    #
+    # @api private
+    #
+    def pure_connection
+      index.connection.connection
+    end
 
     # Initialize object
     #

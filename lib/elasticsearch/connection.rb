@@ -78,7 +78,7 @@ module Elasticsearch
     def wait(name, options={})
       defaults = {
         :wait_for_status => :green,
-        :timeout => 60,
+        :timeout => '60s',
         :level => :index
       }
 
@@ -105,12 +105,16 @@ module Elasticsearch
 
     # Perform bulk operation
     #
-    # @param [Bulk]
-    # @param [Path]
+    # @param [Bulk] bulk
+    #
+    # @param [Path] path
+    #
+    # @return [self]
+    #
+    # @api private
     #
     def bulk(bulk, path = nil)
       connection.post("#{path}/_bulk") do |request|
-        p bulk
         request.body = bulk.body
       end
     end
@@ -161,19 +165,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def connection
-      @connection
-    end
-
-    # Return slice length
-    #
-    # @return [Fixnum]
-    #
-    # @api private
-    #
-    def slice_size
-      @options.fetch(:slice_size, 100)
-    end
+    attr_reader :connection
 
   private
 
@@ -192,7 +184,6 @@ module Elasticsearch
     # @return [undefined]
     #
     # @api private
-    #
     #
     def initialize(uri, options={})
       @uri     = uri

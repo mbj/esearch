@@ -1,1 +1,2 @@
 * Investigate into other transport protocols than HTTP
+* Use operations instead of #insert, #update etc API.

@@ -38,10 +38,7 @@ module Elasticsearch
     #
     def bulk(bulk, type=nil)
       path = "/#{name}"
-
-      if type
-        path = "#{path}/#{type}"
-      end
+      path = "#{path}/#{type}" if type
 
       connection.bulk(bulk, path)
 

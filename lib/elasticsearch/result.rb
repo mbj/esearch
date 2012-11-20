@@ -1,16 +1,20 @@
 module Elasticsearch
+  # Result of query
   class Result
     include Adamantium::Flat, Enumerable
 
     # Return facets
     #
-    # @return [Enumerable<Facet>]
+    # @return [Hash]
     #
     # @api private
     #
     def facets
-      FacetSet.new(@data.fetch('facets', {}))
+      @data.fetch('facets', {}).each_with_object({}) do |(name, body), hash|
+        hash[name] = Facet.build(body)
+      end
     end
+    memoize :facets
 
     # Return hits
     #
@@ -19,7 +23,7 @@ module Elasticsearch
     # @api private
     #
     def hits
-      HitSet.new(@data.fetch('hits'))
+      Hits.new(@data.fetch('hits'))
     end
     memoize :hits
 
