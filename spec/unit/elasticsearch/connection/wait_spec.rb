@@ -18,7 +18,7 @@ describe Elasticsearch::Connection,'#wait' do
   let(:verb)         { :get }
   let(:content_type) { 'application/json; charset=UTF-8' }
   let(:body)         { '{}' }
-  let(:path)         { '/_cluster/health/test?level=index&timeout=60&wait_for_status=green' }
+  let(:path)         { '/_cluster/health/test?level=index&timeout=60s&wait_for_status=green' }
 
   context 'when request is successful' do
     let(:status) { 200 }
