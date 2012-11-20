@@ -74,7 +74,40 @@ module Elasticsearch
         aspects.size
       end
 
+      # Enumerate aspects
+      #
+      # @return [Enumerable<Aspect>]
+      #
+      # @api private
+      #
+      def aspects
+        @data.fetch(facet_key).map do |item|
+          aspect_class.new(item)
+        end
+      end
+      memoize :aspects
+
     private
+
+      # Return facet key
+      #
+      # @return [String]
+      #
+      # @api private
+      #
+      def facet_key
+        self.class::FACET_KEY
+      end
+
+      # Return aspect class
+      #
+      # @return [Class]
+      #
+      # @api private
+      #
+      def aspect_class
+        self.class::ASPECT_CLASS
+      end
 
       # Initialize object
       #
@@ -86,6 +119,22 @@ module Elasticsearch
       #
       def initialize(data)
         @data = data
+      end
+
+      # Facet that returns range counts
+      class Range < self
+        register 'range'
+
+        ASPECT_CLASS = Aspect::Range
+        FACET_KEY = 'ranges'.freeze
+      end
+
+      # Facet that returns term counts
+      class Terms < self
+        register 'terms'
+
+        ASPECT_CLASS = Aspect::Term
+        FACET_KEY = 'terms'.freeze
       end
 
     end

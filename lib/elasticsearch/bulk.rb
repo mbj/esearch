@@ -19,10 +19,7 @@ module Elasticsearch
     #
     def body
       operations.map do |operation|
-        [
-          operation.bulk_header,
-          operation.bulk_body
-        ].join("\n")
+        operation.bulk_operation
       end.join("\n")
     end
     memoize :body

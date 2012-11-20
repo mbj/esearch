@@ -7,17 +7,17 @@ require 'abstract_class'
 
 # Library namespace
 module Elasticsearch
+  # Error raised when node signals an exception
   class RemoteError < StandardError; end
+  # Error raised when protocol is violated
   class ProtocolError < StandardError; end
 end
 
 require 'elasticsearch/connection'
 require 'elasticsearch/result'
 require 'elasticsearch/result/hit'
+require 'elasticsearch/result/aspect'
 require 'elasticsearch/result/facet'
-require 'elasticsearch/result/facet/aspect'
-require 'elasticsearch/result/facet/terms'
-require 'elasticsearch/result/facet/range'
 require 'elasticsearch/index'
 require 'elasticsearch/operation'
 require 'elasticsearch/bulk'
