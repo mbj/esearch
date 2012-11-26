@@ -1,7 +1,7 @@
 module Elasticsearch
   # Abstract base class for operations
   class Operation
-    include Adamantium::Flat, AbstractClass
+    include Adamantium::Flat, AbstractType
 
     # Abstract base class for nullary operations
     class Nullary < self

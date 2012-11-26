@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Abstract base class of an aspect of a facet
     class Aspect
-      include Adamantium::Flat, AbstractClass
+      include Adamantium::Flat, AbstractType
 
       # Return count of occurences of aspect in facet
       #

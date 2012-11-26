@@ -2,7 +2,7 @@ require 'multi_json'
 require 'faraday'
 require 'adamantium'
 require 'equalizer'
-require 'abstract_class'
+require 'abstract_type'
 
 # Library namespace
 module Elasticsearch

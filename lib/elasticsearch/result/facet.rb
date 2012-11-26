@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Abstract base class for facets in results
     class Facet
-      include Adamantium::Flat, AbstractClass, Equalizer.new(:aspects)
+      include Adamantium::Flat, AbstractType, Equalizer.new(:aspects)
 
       # Build facet from data
       #

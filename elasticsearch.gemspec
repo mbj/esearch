@@ -19,6 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('faraday',             '~> 0.8.4')
   gem.add_runtime_dependency('adamantium',          '~> 0.0.3')
   gem.add_runtime_dependency('equalizer',           '~> 0.0.1')
-  gem.add_runtime_dependency('abstract_class',      '~> 0.0.1')
+  gem.add_runtime_dependency('abstract_type',       '~> 0.0.2')
   gem.add_runtime_dependency('multi_json',          '~> 1.3.6')
 end
