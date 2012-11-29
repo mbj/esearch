@@ -27,21 +27,12 @@ module Elasticsearch
       # @api private
       #
       def self.get(type)
-        registry.fetch(type) do
+        REGISTRY.fetch(type) do
           raise "Facet with type #{type.inspect} is not known"
         end
       end
 
-      # Return registry
-      #
-      # @api private
-      #
-      # @return [Hash]
-      #
-      def self.registry
-        @@registry ||= {}
-      end
-      private_class_method :registry
+      REGISTRY = {}
 
       # Register type
       #
@@ -52,7 +43,7 @@ module Elasticsearch
       # @api private
       #
       def self.register(type)
-        registry[type]=self
+        REGISTRY[type]=self
       end
       private_class_method :register
 

@@ -33,8 +33,9 @@ module Elasticsearch
     #
     def get(id)
       response = pure_connection.get("#{index.name}/#{name}/#{id}") do |request|
-        request.options[:expect_status] = [200, 404]
-        request.options[:convert_json] = true
+        options = request.options
+        options[:expect_status] = [200, 404]
+        options[:convert_json] = true
       end
 
       if response.status == 200
@@ -55,8 +56,9 @@ module Elasticsearch
       index = self.index
 
       pure_connection.post("#{index.name}/#{name}/#{id}?op_type=create") do |request|
-        request.options[:expect_status]=201
-        request.options[:convert_json]=201
+        options = request.options
+        options[:expect_status]=201
+        options[:convert_json]=201
         request.body = document
       end
 
@@ -76,8 +78,9 @@ module Elasticsearch
       index = self.index
 
       pure_connection.post("#{index.name}/#{name}/#{id}?op_type=index") do |request|
-        request.options[:expect_status]=200
-        request.options[:convert_json]=200
+        options = request.options
+        options[:expect_status]=200
+        options[:convert_json]=200
         request.body = document
       end
 
@@ -95,8 +98,9 @@ module Elasticsearch
     #
     def delete(id)
       pure_connection.delete("#{index.name}/#{name}/#{id}") do |request|
-        request.options[:expect_status]=200
-        request.options[:convert_json]=200
+        options = request.options
+        options[:expect_status]=200
+        options[:convert_json]=200
       end
 
       self

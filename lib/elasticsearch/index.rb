@@ -30,22 +30,6 @@ module Elasticsearch
       self
     end
 
-    # Perform bulk operation
-    #
-    # @param [Bulk] bulk
-    #
-    # @return [self]
-    #
-    def bulk(bulk, type=nil)
-      path = "/#{name}"
-      path = "#{path}/#{type}" if type
-
-      connection.bulk(bulk, path)
-
-      self
-    end
-    
-
     # Drop index
     #
     # @return [self]
