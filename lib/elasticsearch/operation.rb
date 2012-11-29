@@ -5,6 +5,13 @@ module Elasticsearch
 
     # Abstract base class for nullary operations
     class Nullary < self
+
+      # Intialize object
+      #
+      # @param [Hash] document
+      #
+      # @api private
+      #
       def initialize(document)
         @document = document
       end

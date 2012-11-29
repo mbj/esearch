@@ -19,19 +19,6 @@ module Elasticsearch
     #
     attr_reader :name
 
-    # Batch create documents
-    #
-    # @param [Enumerable<Hash>] documents
-    #
-    # @return [self]
-    #
-    # @api private
-    #
-    def bulk(bulk)
-      index.bulk(bulk, name)
-      self
-    end
-
     # Get document
     #
     # @param [String] id
