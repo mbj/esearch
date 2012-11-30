@@ -107,6 +107,7 @@ module Elasticsearch
     #
     def read(query, type = nil)
       path = name
+
       if type
         path = "#{path}/#{type}"
       end
