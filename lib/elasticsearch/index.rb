@@ -92,7 +92,7 @@ module Elasticsearch
       self
     end
 
-    # Return tuples from query
+    # Return hits from query
     #
     # @param [String] path
     #   the elasticsearch path to query most likely a string with the index name
@@ -105,8 +105,13 @@ module Elasticsearch
     # @return [Result]
     #   returns a result instance wrapping the decoded json body
     #
-    def read(query)
-      connection.read(name, query)
+    def read(query, type = nil)
+      path = name
+      if type
+        path = "#{path}/#{type}"
+      end
+
+      connection.read(path, query)
     end
 
     # Return type for index

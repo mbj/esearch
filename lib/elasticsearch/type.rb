@@ -87,6 +87,20 @@ module Elasticsearch
       self
     end
 
+    # Return result from query
+    #
+    # @param [Result] query
+    #   the query in elasticsearch format as a hash
+    #
+    # @api private
+    #
+    # @return [Result]
+    #   returns a result instance wrapping the decoded json body
+    #
+    def read(query)
+      pure_connection.read("#{index.name}/#{name}", query)
+    end
+
     # Delete document
     #
     # @param [String] id
