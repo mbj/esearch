@@ -15,6 +15,7 @@ end
 require 'elasticsearch/connection'
 require 'elasticsearch/result'
 require 'elasticsearch/result/hit'
+require 'elasticsearch/result/hits'
 require 'elasticsearch/result/aspect'
 require 'elasticsearch/result/aspect/term'
 require 'elasticsearch/result/aspect/range'

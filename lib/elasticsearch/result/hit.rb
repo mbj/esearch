@@ -1,70 +1,41 @@
 module Elasticsearch
   class Result
-    # Presenter for elasticsearch result hits
-    class Hits
-      include Adamantium::Flat, Enumerable
-
-      # Return data
+    # Presenter for an hit
+    class Hit
+      include Adamantium::Flat, Equalizer.new(:document)
+  
+      # Return presented document
       #
       # @return [Hash]
       #
       # @api private
       #
-      attr_reader :data
-
-      # Enumerate contents
+      attr_reader :document
+  
+      # Return source field if present
       #
-      # @return [self]
-      #   if block given
+      # @return [Hash] 
+      #   if present
       #
-      # @return [Enumerator<Hit>]
+      # @return [nil]
       #   otherwise
       #
-      # @api private
-      #
-      def each(&block)
-        return to_enum unless block_given?
-
-        contents.each(&block)
-
-        self
-      end
-
-      # Return contents enumerator
-      #
-      # @return [Enumerator<Hit>]
-      #
-      # @api private
-      #
-      def contents
-        data.fetch('hits').map do |hit|
-          Hit.new(hit)
-        end
-      end
-      memoize :contents
-      
-      # Return total amount of hits
-      #
-      # @return [Fixnum]
-      #
-      # @api private
-      #
-      def total
-        data.fetch('total')
+      def source
+        document['_source']
       end
 
     private
-
-      # Initialize ojbect
+  
+      # Initialize object
       #
-      # @param [Hash] data
+      # @param [Hash] document
       #
-      # @return [undefined]
+      # @return [self]
       #
       # @api private
       #
-      def initialize(data)
-        @data = data
+      def initialize(document)
+        @document = document
       end
 
     end
