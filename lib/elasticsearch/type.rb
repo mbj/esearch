@@ -98,7 +98,7 @@ module Elasticsearch
     #   returns a result instance wrapping the decoded json body
     #
     def read(query)
-      pure_connection.read("#{index.name}/#{name}", query)
+      connection.read("#{index.name}/#{name}", query)
     end
 
     # Delete document
