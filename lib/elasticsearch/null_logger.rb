@@ -8,7 +8,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def self.debug(message)
+    def self.debug(_message)
       self
     end
 
@@ -18,7 +18,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def self.info(message)
+    def self.info(_message)
       self
     end
 
@@ -28,7 +28,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def self.warn(message)
+    def self.warn(_message)
       self
     end
 
@@ -38,7 +38,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def self.error(message)
+    def self.error(_message)
       self
     end
   end
