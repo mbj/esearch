@@ -20,6 +20,8 @@ module Elasticsearch
       # @return [nil]
       #   otherwise
       #
+      # @api private
+      #
       def source
         document['_source']
       end

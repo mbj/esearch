@@ -47,7 +47,7 @@ module Elasticsearch
       #
       # @return [Fixnum]
       #
-      # @api privte
+      # @api private
       #
       def size
         raw_hits.size
