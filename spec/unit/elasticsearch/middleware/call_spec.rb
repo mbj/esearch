@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe Elasticsearch::Middleware,'#call' do
-  let(:object) { described_class.new(*arguments) }
+  let(:object) { described_class.new(app, logger) }
 
   let(:app)    { mock(:App) }
+  let(:logger) { mock(:Logger) }
   let(:env)    { {} }
 
   let(:arguments) { [app] }
@@ -21,20 +22,8 @@ describe Elasticsearch::Middleware,'#call' do
     subject
   end
 
-  context 'when logger is NOT present in arguments' do
-    it 'should NOT store default logger in env' do
-      subject
-      env.should == { :logger => Elasticsearch::NullLogger }
-    end
-  end
-
-  context 'when logger is present in arguments' do
-    let(:logger) { mock(:Logger) }
-    let(:arguments) { [app,logger] }
-
-    it 'should store logger in env' do
-      subject
-      env.should == { :logger => logger }
-    end
+  it 'should store logger in env' do
+    subject
+    env.should == { :logger => logger }
   end
 end

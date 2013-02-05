@@ -33,7 +33,7 @@ module Elasticsearch
     #
     # @api private
     #
-    def initialize(app, logger=NullLogger)
+    def initialize(app, logger)
       @app, @logger = app, logger
     end
   end

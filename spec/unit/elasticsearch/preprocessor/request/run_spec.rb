@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Elasticsearch::Preprocessor::Request,'#run' do
   let(:object) { described_class.new(env) }
 
-  subject { object.run }
+  let(:logger) { NullLogger.instance }
 
-  let(:logger) { ::Elasticsearch::NullLogger }
+  subject { object.run }
 
   let(:body) { { :foo => 'bar'} }
 

@@ -22,7 +22,7 @@ describe Elasticsearch::Preprocessor::Response,'#run' do
   let(:body) { '{"foo":"bar"}' }
   let(:method) { :get }
 
-  let(:logger) { Elasticsearch::NullLogger }
+  let(:logger) { NullLogger.instance }
 
   let(:status) { 200 }
   let(:response_headers) { { 'content-type' => content_type } }

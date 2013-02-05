@@ -3,6 +3,7 @@ require 'faraday'
 require 'adamantium'
 require 'equalizer'
 require 'abstract_type'
+require 'null_logger'
 
 # Library namespace
 module Elasticsearch
@@ -28,5 +29,4 @@ require 'elasticsearch/preprocessor/response'
 require 'elasticsearch/preprocessor/request'
 require 'elasticsearch/preprocessor'
 require 'elasticsearch/type'
-require 'elasticsearch/null_logger'
 require 'elasticsearch/middleware'

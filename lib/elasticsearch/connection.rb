@@ -189,7 +189,7 @@ module Elasticsearch
       @uri     = uri
       @connection = Faraday.new(@uri) do |builder|
         adapter = [*options.fetch(:adapter, :net_http)]
-        logger  = options.fetch(:logger, NullLogger)
+        logger  = options.fetch(:logger, NullLogger.instance)
         builder.use(Middleware, logger)
         builder.adapter(*adapter)
       end
