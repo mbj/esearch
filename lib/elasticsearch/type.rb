@@ -37,15 +37,7 @@ module Elasticsearch
     # @api private
     #
     def create(id, document)
-      index = self.index
-
-      pure_connection.post("#{index.name}/#{name}/#{id}?op_type=create") do |request|
-        options = request.options
-        options[:expect_status]=201
-        options[:convert_json]=201
-        request.body = document
-      end
-
+      perform_document_action(id, document, :create, 201)
       self
     end
 
@@ -59,15 +51,7 @@ module Elasticsearch
     # @api private
     #
     def update(id, document)
-      index = self.index
-
-      pure_connection.post("#{index.name}/#{name}/#{id}?op_type=index") do |request|
-        options = request.options
-        options[:expect_status]=200
-        options[:convert_json]=200
-        request.body = document
-      end
-
+      perform_document_action(id, document, :index, 200)
       self
     end
 
@@ -105,6 +89,26 @@ module Elasticsearch
     end
 
   private
+
+    # Perform document action
+    #
+    # @param [String] id
+    # @param [Hash] document
+    # @param [Symbol] action
+    # @param [Fixnum] status
+    #
+    # @return [undefined]
+    #
+    # @api private
+    #
+    def perform_document_action(id, document, action, status)
+      pure_connection.post("#{index.name}/#{name}/#{id}?op_type=#{action}") do |request|
+        options = request.options
+        options[:expect_status]=status
+        options[:convert_json]=true
+        request.body = document
+      end
+    end
 
     # Return pure connection
     #

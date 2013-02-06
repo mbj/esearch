@@ -21,8 +21,9 @@ UncommunicativeMethodName:
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
 LongParameterList:
-  max_params: 2  # TODO: decrease max_params to 2
-  exclude: []
+  max_params: 2 
+  exclude: 
+  - Elasticsearch::Type#perform_document_action # 4 params TODO refactor away into perations
   enabled: true
   overrides: {}
 FeatureEnvy:
