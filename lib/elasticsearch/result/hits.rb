@@ -2,15 +2,7 @@ module Elasticsearch
   class Result
     # Presenter for elasticsearch result hits
     class Hits
-      include Adamantium::Flat, Enumerable
-
-      # Return data
-      #
-      # @return [Hash]
-      #
-      # @api private
-      #
-      attr_reader :data
+      include Adamantium::Flat, Enumerable, Composition.new(:data)
 
       # Enumerate contents
       #
@@ -64,18 +56,6 @@ module Elasticsearch
       end
 
     private
-
-      # Initialize ojbect
-      #
-      # @param [Hash] data
-      #
-      # @return [undefined]
-      #
-      # @api private
-      #
-      def initialize(data)
-        @data = data
-      end
 
       # Return raw hits
       #

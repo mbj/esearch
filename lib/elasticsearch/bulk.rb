@@ -1,15 +1,7 @@
 module Elasticsearch
   # Bulk operation
   class Bulk
-    include Adamantium::Flat, Equalizer.new(:operations)
-
-    # Return operations
-    #
-    # @return [Enumerable<Operation>]
-    #
-    # @api private
-    #
-    attr_reader :operations
+    include Adamantium::Flat, Composition.new(:operations)
 
     # Return body for bulk operation
     # 
@@ -24,18 +16,5 @@ module Elasticsearch
     end
     memoize :body
 
-  private
-
-    # Initialize object
-    #
-    # @param [Enumerable<Operation>] operations
-    #
-    # @return [undefined]
-    #
-    # @api private
-    #
-    def initialize(operations)
-      @operations = operations
-    end
   end
 end

@@ -2,6 +2,7 @@ require 'multi_json'
 require 'faraday'
 require 'adamantium'
 require 'equalizer'
+require 'composition'
 require 'abstract_type'
 require 'null_logger'
 

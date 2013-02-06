@@ -2,7 +2,7 @@ module Elasticsearch
 
   # Faraday middleware for elasticsearch http connections
   class Middleware
-    include Adamantium::Flat
+    include Adamantium::Flat, Composition.new(:app, :logger)
 
     # Middleware call from faraday
     #
@@ -22,20 +22,5 @@ module Elasticsearch
       end
     end
 
-  private
-
-    # Initialize middleware
-    #
-    # @param [#call] app
-    # @param [Logger] logger
-    #
-    # @return [undefined]
-    #
-    # @api private
-    #
-    def initialize(app, logger)
-      @app, @logger = app, logger
-    end
   end
-
 end

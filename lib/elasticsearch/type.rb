@@ -1,23 +1,7 @@
 module Elasticsearch
   # Driver for specific elasticsearch type
   class Type
-    include Adamantium::Flat, Equalizer.new(:index, :name)
-
-    # Return index
-    #
-    # @return [Index]
-    #
-    # @api private
-    #
-    attr_reader :index
-    
-    # Return name
-    #
-    # @return [String]
-    #
-    # @api private
-    #
-    attr_reader :name
+    include Adamantium::Flat, Composition.new(:index, :name)
 
     # Get document
     #
@@ -132,19 +116,6 @@ module Elasticsearch
     #
     def pure_connection
       index.connection.connection
-    end
-
-    # Initialize object
-    #
-    # @param [Adapter::Elasticsearch::Index] index
-    # @param [String] name
-    #
-    # @return [undefined]
-    #
-    # @api private
-    #
-    def initialize(index, name)
-      @index, @name = index, name
     end
 
   end

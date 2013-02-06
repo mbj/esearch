@@ -12,7 +12,7 @@ module Elasticsearch
         # @api private
         #
         def value
-          @data.fetch('term')
+          data.fetch('term')
         end
         memoize :value
 

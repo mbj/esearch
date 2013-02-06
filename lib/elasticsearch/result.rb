@@ -1,7 +1,7 @@
 module Elasticsearch
   # Result of query
   class Result
-    include Adamantium::Flat, Enumerable
+    include Adamantium::Flat, Enumerable, Composition.new(:data)
 
     # Return facets
     #
@@ -10,7 +10,7 @@ module Elasticsearch
     # @api private
     #
     def facets
-      @data.fetch('facets', {}).each_with_object({}) do |(name, body), hash|
+      data.fetch('facets', {}).each_with_object({}) do |(name, body), hash|
         hash[name] = Facet.build(body)
       end
     end
@@ -23,22 +23,9 @@ module Elasticsearch
     # @api private
     #
     def hits
-      Hits.new(@data.fetch('hits'))
+      Hits.new(data.fetch('hits'))
     end
     memoize :hits
 
-  private
-
-    # Initialize result
-    #
-    # @param [Hash] data
-    #
-    # @return [undefined]
-    #
-    # @api private
-    #
-    def initialize(data)
-      @data = data
-    end
   end
 end

@@ -2,15 +2,7 @@ module Elasticsearch
   class Result
     # Presenter for an hit
     class Hit
-      include Adamantium::Flat, Equalizer.new(:document)
-  
-      # Return presented document
-      #
-      # @return [Hash]
-      #
-      # @api private
-      #
-      attr_reader :document
+      include Adamantium::Flat, Composition.new(:document)
   
       # Return source field if present
       #
@@ -24,20 +16,6 @@ module Elasticsearch
       #
       def source
         document['_source']
-      end
-
-    private
-  
-      # Initialize object
-      #
-      # @param [Hash] document
-      #
-      # @return [self]
-      #
-      # @api private
-      #
-      def initialize(document)
-        @document = document
       end
 
     end

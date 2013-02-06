@@ -53,7 +53,7 @@ module Elasticsearch
       # @api private
       #
       def status
-        @env.fetch(:status)
+        env.fetch(:status)
       end
 
       # Load json request body
@@ -69,7 +69,7 @@ module Elasticsearch
           raise ProtocolError, "Expected json content type but got: #{content_type.inspect}"
         end
 
-        @env[:body] = MultiJson.load(body)
+        env[:body] = MultiJson.load(body)
 
         self
       end
@@ -101,7 +101,7 @@ module Elasticsearch
       # @api private
       #
       def response_headers
-        @env.fetch(:response_headers)
+        env.fetch(:response_headers)
       end
 
       # Log this response

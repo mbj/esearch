@@ -1,6 +1,8 @@
 module Elasticsearch
   # Base class for request and response preprocessor
   class Preprocessor
+    include Composition.new(:env)
+
     # Invoke preprocessor
     #
     # @param [Hash] env
@@ -24,7 +26,7 @@ module Elasticsearch
     # @api private
     #
     def method
-      @env.fetch(:method)
+      env.fetch(:method)
     end
 
     # Check if body should be converted from/to JSON
@@ -46,7 +48,7 @@ module Elasticsearch
     # @api private
     #
     def options
-      @env.fetch(:request)
+      env.fetch(:request)
     end
 
     # Read request url
@@ -56,7 +58,7 @@ module Elasticsearch
     # @api private
     #
     def url
-      @env.fetch(:url)
+      env.fetch(:url)
     end
 
     # Return request or response body
@@ -66,7 +68,7 @@ module Elasticsearch
     # @api private
     #
     def body
-      @env.fetch(:body)
+      env.fetch(:body)
     end
 
     # Return logger
@@ -76,21 +78,8 @@ module Elasticsearch
     # @api private
     #
     def logger
-      @env[:logger]
+      env[:logger]
     end
 
-  private
-
-    # Initialize preprecessor
-    #
-    # @param [Hash] env
-    #
-    # @return [undefined]
-    #
-    # @api private
-    #
-    def initialize(env)
-      @env = env
-    end
   end
 end

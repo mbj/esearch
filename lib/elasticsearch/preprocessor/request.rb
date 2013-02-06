@@ -29,7 +29,7 @@ module Elasticsearch
 
         body = self.body
 
-        @env[:body] = MultiJson.dump(body) if body
+        env[:body] = MultiJson.dump(body) if body
 
         self
       end

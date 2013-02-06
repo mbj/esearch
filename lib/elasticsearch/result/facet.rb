@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Abstract base class for facets in results
     class Facet
-      include Adamantium::Flat, AbstractType, Equalizer.new(:aspects)
+      include Adamantium::Flat, AbstractType, Composition.new(:data)
 
       # Build facet from data
       #
@@ -72,7 +72,7 @@ module Elasticsearch
       # @api private
       #
       def aspects
-        @data.fetch(facet_key).map do |item|
+        data.fetch(facet_key).map do |item|
           aspect_class.new(item)
         end
       end
@@ -98,18 +98,6 @@ module Elasticsearch
       #
       def aspect_class
         self.class::ASPECT_CLASS
-      end
-
-      # Initialize object
-      #
-      # @param [Hash] data
-      #
-      # @return [undefined]
-      #
-      # @api private
-      #
-      def initialize(data)
-        @data = data
       end
 
       # Facet that returns range counts

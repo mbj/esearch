@@ -12,7 +12,7 @@ module Elasticsearch
         # @api private
         #
         def from
-          @data['from']
+          data['from']
         end
         memoize :from
 
@@ -23,7 +23,7 @@ module Elasticsearch
         # @api private
         #
         def to
-          @data['to']
+          data['to']
         end
         memoize :to
 
@@ -34,7 +34,7 @@ module Elasticsearch
         # @api private
         #
         def total_count
-          @data.fetch('total_count')
+          data.fetch('total_count')
         end
 
         # Return total 
@@ -44,7 +44,7 @@ module Elasticsearch
         # @api private
         #
         def total
-          @data.fetch('total')
+          data.fetch('total')
         end
 
         # Return mean 
@@ -54,10 +54,10 @@ module Elasticsearch
         # @api private
         #
         def mean
-          @data.fetch('mean')
+          data.fetch('mean')
         end
-      end
 
+      end
     end
   end
 end
