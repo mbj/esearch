@@ -14,67 +14,6 @@ module Elasticsearch
       self
     end
 
-    # Return path
-    #
-    # @return [Pathname]
-    #
-    # @api private
-    #
-    def path
-      Pathname.new("/#{name}")
-    end
-    memoize :path
-
-    # Drop index
-    #
-    # @return [self]
-    #
-    # @api private
-    #
-    def drop
-      connection.drop(name)
-      self
-    end
-
-    # Wait for index presence
-    #
-    # @param [Hash] options
-    #
-    # @return [self]
-    #
-    # @api private
-    #
-    def wait(options={})
-      Command::Wait.new(connection, "/_cluster/health/#{name}", options)
-      connection.wait(name, options)
-      self
-    end
-
-    # Test if index does exist
-    #
-    # @return [true]
-    #   if index does exist
-    #
-    # @return [false]
-    #   otherwise
-    #
-    # @api private
-    #
-    def exist?
-      connection.exist?(name)
-    end
-
-    # Refresh index
-    #
-    # @return [self]
-    #
-    # @api private
-    #
-    def refresh
-      connection.refresh(name)
-      self
-    end
-
     # Setup index
     #
     # @param [Hash] settings
@@ -88,27 +27,25 @@ module Elasticsearch
       self
     end
 
-    # Return hits from query
+    # Drop index
     #
-    # @param [String] path
-    #   the elasticsearch path to query most likely a string with the index name
-    #
-    # @param [Hash] query
-    #   the query in elasticsearch format as a hash
+    # @return [self]
     #
     # @api private
     #
-    # @return [Result]
-    #   returns a result instance wrapping the decoded json body
+    def drop
+      Command::Drop.run(connection, path)
+      self
+    end
+
+    # Return result
     #
-    def read(query, type = nil)
-      path = name
-
-      if type
-        path = "#{path}/#{type}"
-      end
-
-      connection.read(path, query)
+    # @param [Hash] query
+    #
+    # @api private
+    #
+    def read(query)
+      Command::Read.run(connection, path, query)
     end
 
     # Return type for index
@@ -122,6 +59,19 @@ module Elasticsearch
     def type(name)
       Type.new(self, name)
     end
+
+  private
+
+    # Return path
+    #
+    # @return [Pathname]
+    #
+    # @api private
+    #
+    def path
+      Pathname.new("/#{name}")
+    end
+    memoize :path
 
   end
 end

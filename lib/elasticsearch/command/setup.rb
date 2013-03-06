@@ -1,5 +1,6 @@
 module Elasticsearch
   class Command
+    # Setup command
     class Setup < self
       include Composition.new(:connection, :path, :settings)
 

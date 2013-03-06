@@ -1,8 +1,8 @@
 module Elasticsearch
   class Command
-    # Read command
-    class Read < self
-      include Composition.new(:connection, :path, :query)
+    # Drop command
+    class Drop < self
+      include Composition.new(:connection, :path)
 
       # Return result
       #
@@ -24,9 +24,8 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.get(path.join('_search').to_s, query)
+        connection.delete(path.to_s)
       end
     end
   end
 end
-

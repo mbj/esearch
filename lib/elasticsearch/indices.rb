@@ -1,4 +1,5 @@
 module Elasticsearch
+  # A set of indices to issue commands on
   class Indices
     include Adamantium::Flat, Composition.new(:connection, :indices)
 
@@ -24,6 +25,16 @@ module Elasticsearch
       self
     end
 
+    # Read from indices
+    #
+    # @return [Result]
+    #
+    # @api private
+    #
+    def read(query)
+      Command::Reader.new(connection, path, query)
+    end
+
     # Return tuples from query
     #
     # @param [Hash] query
@@ -37,6 +48,7 @@ module Elasticsearch
       Command::Read.run(connection, path, query)
     end
 
+    # Control all indices of a cluster
     class All < self
       include Composition.new(:connection)
 

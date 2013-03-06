@@ -37,7 +37,7 @@ module Elasticsearch
     # @api private
     #
     def self.build(uri)
-      Faraday.new(uri)
+      new(Faraday.new(uri))
     end
 
   end

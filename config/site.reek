@@ -78,7 +78,7 @@ UncommunicativeVariableName:
 SimulatedPolymorphism:
   exclude: []
   enabled: true
-  max_ifs: 1
+  max_ifs: 2
 DataClump:
   exclude: []
   enabled: true
