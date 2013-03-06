@@ -3,6 +3,20 @@ module Elasticsearch
   class Type
     include Adamantium::Flat, Composition.new(:es_index, :name)
 
+    # Test if index does exist
+    #
+    # @return [true]
+    #   if index exists
+    #
+    # @return [false]
+    #   otherwise
+    #
+    # @api private
+    #
+    def exist?
+      Command::Exist.run(self)
+    end
+
     # Index document
     #
     # @param [Document] document
