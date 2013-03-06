@@ -19,6 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('adamantium',          '~> 0.0.7')
   gem.add_runtime_dependency('equalizer',           '~> 0.0.5')
   gem.add_runtime_dependency('abstract_type',       '~> 0.0.5')
-  gem.add_runtime_dependency('multi_json',          '~> 1.3.6')
+  gem.add_runtime_dependency('multi_json',          '~> 1.6.1')
   gem.add_runtime_dependency('null_logger',         '~> 0.0.1')
 end
