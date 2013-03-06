@@ -3,6 +3,12 @@ module Elasticsearch
     class Read < self
       include Composition.new(:connection, :path, :query)
 
+      # Return result
+      #
+      # @return [Result]
+      #
+      # @api private
+      #
       def result
         assert_success
         Result.new(parsed_json)
@@ -10,6 +16,12 @@ module Elasticsearch
 
     private
 
+      # Return response
+      #
+      # @return [Faraday::Response]
+      #
+      # @api private
+      #
       def response
         connection.get(path.join('_search').to_s, query)
       end

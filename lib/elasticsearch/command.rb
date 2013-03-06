@@ -3,6 +3,12 @@ module Elasticsearch
   class Command 
     include Adamantium::Flat, AbstractType
 
+    # Run command
+    #
+    # @return [Object]
+    #
+    # @api private
+    #
     def self.run(*args)
       new(*args).result
     end
@@ -69,6 +75,12 @@ module Elasticsearch
       response.headers
     end
 
+    # Raise remote error
+    #
+    # @return [undefined]
+    #
+    # @api private
+    #
     def raise_remote_error
       message=
         if json_content_type?
@@ -79,6 +91,12 @@ module Elasticsearch
       raise RemoteError, message
     end
 
+    # Return parsed json
+    #
+    # @return [Hash]
+    #
+    # @api private
+    #
     def parsed_json
       unless json_content_type?
         raise ProtocolError, "Expected json body, but got: #{content_type}"
@@ -86,8 +104,6 @@ module Elasticsearch
       MultiJson.load(response.body)
     end
     memoize :parsed_json
-
-  private
 
     # Return response
     #

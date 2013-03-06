@@ -7,8 +7,13 @@ module Elasticsearch
 
     private
 
+      # Return response
+      #
+      # @return [Faraday::Response]
+      #
+      # @api private
+      #
       def response
-        p path
         connection.put(path.to_s) do |request|
           request.body = MultiJson.dump(settings)
         end
