@@ -10,9 +10,20 @@ module Elasticsearch
     # @return [self]
     #
     def refresh
-      connection.refresh(name)
+      Command::Refresh::Index.run(self)
       self
     end
+
+    # Return path
+    #
+    # @return [Pathname]
+    #
+    # @api private
+    #
+    def path
+      Pathname.new("/#{name}")
+    end
+    memoize :path
 
     # Drop index
     #
@@ -34,6 +45,7 @@ module Elasticsearch
     # @api private
     #
     def wait(options={})
+      Command::Wait.new(connection, "/_cluster/health/#{name}", options)
       connection.wait(name, options)
       self
     end
@@ -71,8 +83,8 @@ module Elasticsearch
     #
     # @api private
     #
-    def setup(settings = {})
-      connection.setup(name, settings)
+    def setup(settings)
+      Command::Setup.run(connection, path, settings)
       self
     end
 
