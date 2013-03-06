@@ -1,21 +1,20 @@
 module Elasticsearch
-  class Result
+  class Presenter
 
-    # Abstract base class for facets in results
-    class Facet
-      include Adamantium::Flat, AbstractType, Composition.new(:data)
+    # Base class for facets in results
+    class Facet < self
 
-      # Build facet from data
+      # Build facet from raw
       #
-      # @param [Hash] data
+      # @param [Hash] raw
       #
       # @return [Facet]
       #
       # @api private
       #
-      def self.build(data)
-        type = data.fetch('_type')
-        get(type).new(data)
+      def self.build(raw)
+        type = raw.fetch('_type')
+        get(type).new(raw)
       end
 
       # Get class for type
@@ -72,7 +71,7 @@ module Elasticsearch
       # @api private
       #
       def aspects
-        data.fetch(facet_key).map do |item|
+        raw.fetch(facet_key).map do |item|
           aspect_class.new(item)
         end
       end

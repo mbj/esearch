@@ -1,20 +1,11 @@
 module Elasticsearch
   class Command
+
+    # Command to return cluster status
     class Status < self
       include Composition.new(:subject)
 
       PRESENTER = Presenter::Status
-
-      # Return result
-      #
-      # @return [Presenter]
-      #
-      # @api private
-      #
-      def result
-        assert_success
-        presenter.new(parsed_json)
-      end
 
     private
 
@@ -25,7 +16,7 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.get(path)
+        connection.get(subject_path.join('_status'))
       end
       memoize :response
 
@@ -35,14 +26,6 @@ module Elasticsearch
       #
       def connection
         subject.connection
-      end
-
-      # Return path
-      # 
-      # @return [Path]
-      #
-      def path
-        subject.path.join('_status').to_s
       end
 
     end

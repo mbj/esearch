@@ -27,6 +27,19 @@ module Elasticsearch
       Command::Document::Delete.run(self)
     end
 
+    # Index document
+    #
+    # @param [Hash] document
+    # @param [Hash] options
+    #
+    # @return [Presenter::Command::Document::Index]
+    #
+    # @api private
+    #
+    def index(document, options = {})
+      Command::Document::Index.run(self, document, options)
+    end
+
     # Return document
     #
     # @return [Presenter::Command::Document::Get]

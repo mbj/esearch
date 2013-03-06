@@ -64,6 +64,16 @@ module Elasticsearch
       subject.connection
     end
 
+    # Return subject path
+    #
+    # @return [Pathname]
+    #
+    # @api private
+    #
+    def subject_path
+      subject.path
+    end
+
     # Return response content type
     #
     # @return [String]
@@ -71,7 +81,7 @@ module Elasticsearch
     # @api private
     #
     def content_type
-      response_headers['content-type']
+      response.headers['content-type']
     end
 
     # Return expected response stati
@@ -94,16 +104,6 @@ module Elasticsearch
       unless expected_response_stati.include?(response.status)
         raise_status_error
       end
-    end
-
-    # Return response headers
-    #
-    # @return [Hash]
-    #
-    # @api private
-    #
-    def response_headers
-      response.headers
     end
 
     # Raise remote status error

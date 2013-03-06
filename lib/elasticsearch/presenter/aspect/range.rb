@@ -1,5 +1,5 @@
 module Elasticsearch
-  class Result
+  class Presenter
     class Aspect
 
       # Range aspect
@@ -8,24 +8,30 @@ module Elasticsearch
         # Return range start 
         #
         # @return [Float]
+        #   if present
+        #
+        # @return [nil]
+        #   otherwise
         #
         # @api private
         #
         def from
-          data['from']
+          raw['from']
         end
-        memoize :from
 
         # Return range end 
         #
         # @return [Float]
+        #   if present
+        #
+        # @return [nil]
+        #   otherwise
         #
         # @api private
         #
         def to
           data['to']
         end
-        memoize :to
 
         # Return total count
         #
@@ -33,9 +39,7 @@ module Elasticsearch
         #
         # @api private
         #
-        def total_count
-          data.fetch('total_count')
-        end
+        expose_primitive(:total_count)
 
         # Return total 
         #
@@ -43,9 +47,7 @@ module Elasticsearch
         #
         # @api private
         #
-        def total
-          data.fetch('total')
-        end
+        expose_primitive(:total)
 
         # Return mean 
         #
@@ -53,9 +55,7 @@ module Elasticsearch
         #
         # @api private
         #
-        def mean
-          data.fetch('mean')
-        end
+        expose_primitive(:mean)
 
       end
     end

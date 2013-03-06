@@ -29,7 +29,7 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.head(subject.path)
+        connection.head(subject_path)
       end
       memoize :response
 

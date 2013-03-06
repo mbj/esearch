@@ -35,6 +35,7 @@ module Elasticsearch
       #
       expose_primitive(:_version, :version)
 
+      # Base class for document operations
       class Operation < self
 
         # Test for successful operation
@@ -49,12 +50,15 @@ module Elasticsearch
         #
         expose_primitive(:ok, :ok?)
 
+        # Index operation
         class Index < self
         end
 
+        # Update operation
         class Update < self
         end
 
+        # Delete operation
         class Delete < self
 
           # Test if document was found
@@ -72,6 +76,7 @@ module Elasticsearch
         end
       end
 
+      # Presenter for document get result
       class Get < self
 
         # Return source document

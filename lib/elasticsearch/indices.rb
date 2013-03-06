@@ -39,7 +39,7 @@ module Elasticsearch
     #
     # @param [Hash] query
     #
-    # @return [Result]
+    # @return [Presenter::Result]
     #
     # @api private
     #

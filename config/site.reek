@@ -8,7 +8,7 @@ UncommunicativeParameterName:
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
 LargeClass:
-  max_methods: 10
+  max_methods: 11
   exclude: []
   enabled: true
   max_instance_variables: 3
@@ -22,8 +22,7 @@ UncommunicativeMethodName:
   - !ruby/regexp /[A-Z]/
 LongParameterList:
   max_params: 2 
-  exclude: 
-  - Elasticsearch::Type#perform_document_action # 4 params TODO refactor away into perations
+  exclude: []
   enabled: true
   overrides: {}
 FeatureEnvy:
@@ -48,11 +47,11 @@ UncommunicativeModuleName:
 NestedIterators:
   ignore_iterators: []
   exclude:
-  - Adamantium::ModuleMethods#define_memoize_method # 2 levels
+  - Elasticsearch::Presenter#self.expose_tagged_collection # 2 levels
   enabled: true
   max_allowed_nesting: 1
 LongMethod:
-  max_statements: 7  # TODO: decrease max_statements to 5 or less
+  max_statements: 5
   exclude: []
   enabled: true
 Duplication:

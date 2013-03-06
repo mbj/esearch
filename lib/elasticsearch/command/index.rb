@@ -2,11 +2,13 @@ module Elasticsearch
   class Command
     # Base class for commands on index
     class Index < self
+
+      # Create index comand
       class Create < self
         include Composition.new(:subject, :settings)
 
         EXPECT_STATUS = [ 201 ].freeze
-        PRESENTER = Presenter::Command::Index::Create
+        PRESENTER = Presenter::Index::Create
 
       private
 
@@ -17,16 +19,16 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.put(subject.path, settings)
+          connection.put(subject_path, settings)
         end
         memoize :response
 
       end
 
+      # Delete index comand
       class Delete < self
 
-        EXPECT_STATUS = [ 200 ].freeze
-        PRESENTER = Presenter::Command::Index::Delete
+        PRESENTER = Presenter::Index::Delete
 
       private
 
@@ -37,16 +39,16 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.delete(subject.path)
+          connection.delete(subject_path)
         end
         memoize :response
 
       end
 
-      # Command to refresh index
+      # Refresh index command
       class Refresh < self
 
-        PRESENTER = Presenter::Command::Index::Refresh
+        PRESENTER = Presenter::Index::Refresh
 
       private
 
@@ -57,7 +59,7 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.post(subject.path.join('_refresh'))
+          connection.post(subject_path.join('_refresh'))
         end
 
       end

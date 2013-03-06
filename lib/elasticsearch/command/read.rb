@@ -6,7 +6,7 @@ module Elasticsearch
 
       # Return result
       #
-      # @return [Result]
+      # @return [Presenter::Result]
       #
       # @api private
       #
@@ -24,7 +24,7 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.get(subject.path.join('_search'), query)
+        connection.get(subject_path.join('_search'), query)
       end
       memoize :response
 

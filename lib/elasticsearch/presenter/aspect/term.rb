@@ -1,5 +1,5 @@
 module Elasticsearch
-  class Result
+  class Presenter
     class Aspect
 
       # Aspect of a term facet
@@ -11,10 +11,7 @@ module Elasticsearch
         #
         # @api private
         #
-        def value
-          data.fetch('term')
-        end
-        memoize :value
+        expose_primitive(:term, :value)
 
       end
     end

@@ -1,9 +1,8 @@
 module Elasticsearch
-  class Result
+  class Presenter
 
     # Abstract base class of an aspect of a facet
-    class Aspect
-      include Adamantium::Flat, AbstractType, Composition.new(:data)
+    class Aspect < self
 
       # Return count of occurences of aspect in facet
       #
@@ -11,9 +10,7 @@ module Elasticsearch
       #
       # @api private
       #
-      def count
-        data.fetch('count')
-      end
+      expose_primitive(:count)
 
     end
   end
