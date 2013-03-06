@@ -14,7 +14,7 @@ module Elasticsearch
       self
     end
 
-    # Setup index
+    # Cretate remote index
     #
     # @param [Hash] settings
     #
@@ -22,19 +22,19 @@ module Elasticsearch
     #
     # @api private
     #
-    def setup(settings)
-      Command::Setup.run(connection, path, settings)
+    def create(settings)
+      Command::Index::Create.run(self, settings)
       self
     end
 
-    # Drop index
+    # Delete remote index
     #
     # @return [self]
     #
     # @api private
     #
-    def drop
-      Command::Drop.run(connection, path)
+    def delete
+      Command::Index::Delete.run(self)
       self
     end
 
@@ -45,7 +45,7 @@ module Elasticsearch
     # @api private
     #
     def read(query)
-      Command::Read.run(connection, path, query)
+      Command::Read.run(self, query)
     end
 
     # Return type for index
@@ -59,8 +59,6 @@ module Elasticsearch
     def type(name)
       Type.new(self, name)
     end
-
-  private
 
     # Return path
     #

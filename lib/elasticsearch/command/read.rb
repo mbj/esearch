@@ -2,7 +2,7 @@ module Elasticsearch
   class Command
     # Read command
     class Read < self
-      include Composition.new(:connection, :path, :query)
+      include Composition.new(:subject, :query)
 
       # Return result
       #
@@ -12,7 +12,7 @@ module Elasticsearch
       #
       def result
         assert_success
-        Result.new(parsed_json)
+        Presenter::Result.new(parsed_json)
       end
 
     private
@@ -24,8 +24,10 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.get(path.join('_search').to_s, query)
+        connection.get(subject.path.join('_search'), query)
       end
+      memoize :response
+
     end
   end
 end

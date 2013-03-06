@@ -1,44 +1,39 @@
 module Elasticsearch
-  # Interaction endpoint for an elasticsearch cluster
+  # Connection to an elasticsearch cluster
   class Connection
+    include Adamantium::Flat, Composition.new(:raw_connection, :logger)
 
-    include Adamantium::Flat, Composition.new(:connection)
-
-    # Return index with name
-    #
-    # @param [String] name
-    #
-    # @return [Index]
-    #
-    # @api private
-    #
-    def index(name)
-      Index.new(connection, name)
-    end
-
-    # Return all indices object
-    #
-    # @return [All]
-    #
-    # @api private
-    #
-    def all_indices
-      Indices::All.new(connection)
-    end
-    memoize :all_indices
-
-    # Build connection
+    # Return connection
     #
     # @param [String] uri
-    #   the uri of the elasticsearch node to connect
     #
     # @return [Connection]
     #
     # @api private
     #
-    def self.build(uri)
-      new(Faraday.new(uri))
+    def self.build(uri, logger = NullLogger.instance)
+      new(Faraday.new(uri), logger)
     end
 
+    [:put, :post, :get, :delete].each do |verb|
+      define_method(verb) do |path, body = {}|
+        logger.debug { "#{verb.to_s.upcase} #{path}: #{body.inspect}" }
+        raw_connection.public_send(verb, path.to_s) do |request|
+          request.body = MultiJson.dump(body)
+        end
+      end
+    end
+
+    def get_query(path, query)
+      logger.debug { "GET #{path}? #{query.inspect}" }
+      raw_connection.get(path, query)
+    end
+
+    def post_body_query(path, body, query)
+      logger.debug { "POST #{path}? #{query.inspect} #{body.inspect}" }
+      raw_connection.post(path.to_s, query) do |request|
+        request.body = MultiJson.dump(body)
+      end
+    end
   end
 end

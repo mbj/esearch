@@ -1,7 +1,7 @@
 module Elasticsearch
   # Abstract base class for elasticsearch commands
   class Command 
-    include Adamantium::Flat, AbstractType
+    include Adamantium::Flat, AbstractType, Composition.new(:subject)
 
     # Run command
     #
@@ -15,19 +15,20 @@ module Elasticsearch
 
     # Return result of request
     #
-    # @return [self]
+    # @return [Presenter]
     #
     # @api private
     #
     def result
       assert_success
-      self
+      presenter.new(parsed_json)
     end
 
+    EXPECTED_STATI    = [ 200 ].freeze
+    JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
 
   private
 
-    JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
 
     # Test for json content type
     #
@@ -43,6 +44,26 @@ module Elasticsearch
       content_type.eql?(JSON_CONTENT_TYPE)
     end
 
+    # Return presenter
+    #
+    # @return [Class:Presenter]
+    #
+    # @api private
+    #
+    def presenter
+      self.class::PRESENTER
+    end
+
+    # Return connection
+    #
+    # @return [Faraday::Connection]
+    #
+    # @api private
+    #
+    def connection
+      subject.connection
+    end
+
     # Return response content type
     #
     # @return [String]
@@ -53,6 +74,16 @@ module Elasticsearch
       response_headers['content-type']
     end
 
+    # Return expected response stati
+    #
+    # @return [Enumerable<Fixnum>]
+    # 
+    # @api private
+    #
+    def expected_response_stati
+      self.class::EXPECTED_STATI
+    end
+
     # Test for success
     #
     # @return [undefined]
@@ -60,8 +91,8 @@ module Elasticsearch
     # @api private
     #
     def assert_success
-      unless response.status == 200
-        raise_remote_error
+      unless expected_response_stati.include?(response.status)
+        raise_status_error
       end
     end
 
@@ -75,20 +106,28 @@ module Elasticsearch
       response.headers
     end
 
-    # Raise remote error
+    # Raise remote status error
     #
     # @return [undefined]
     #
     # @api private
     #
-    def raise_remote_error
-      message=
-        if json_content_type?
-          parsed_json.inspect
-        else
-          response.body
-        end
-      raise RemoteError, message
+    def raise_status_error
+      raise "expected response stati: #{expected_response_stati.inspect} but got: #{response.status}, remote message: #{remote_message}"
+    end
+
+    # Return remote message
+    #
+    # @return [String]
+    #
+    # @api private
+    #
+    def remote_message
+      if json_content_type?
+        parsed_json.inspect
+      else
+        response.body
+      end
     end
 
     # Return parsed json
@@ -112,5 +151,6 @@ module Elasticsearch
     # @api private
     #
     abstract_method :response
+
   end
 end

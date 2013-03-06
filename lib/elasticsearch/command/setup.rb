@@ -2,7 +2,7 @@ module Elasticsearch
   class Command
     # Setup command
     class Setup < self
-      include Composition.new(:connection, :path, :settings)
+      include Composition.new(:subject, :settings)
 
       EXPECT_STATUS = [ Response::Status::CREATED ].freeze
 
@@ -15,9 +15,7 @@ module Elasticsearch
       # @api private
       #
       def response
-        connection.put(path.to_s) do |request|
-          request.body = MultiJson.dump(settings)
-        end
+        connection.put(subject.path, settings)
       end
     end
   end

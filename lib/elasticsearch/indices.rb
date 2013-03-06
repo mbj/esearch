@@ -1,7 +1,7 @@
 module Elasticsearch
-  # A set of indices to issue commands on
+  # Handler for set of indices
   class Indices
-    include Adamantium::Flat, Composition.new(:connection, :indices)
+    include Adamantium::Flat, Composition.new(:connection, :names)
 
     # Return path
     #
@@ -10,7 +10,7 @@ module Elasticsearch
     # @api private
     #
     def path
-      Pathname.new("/#{indices.join(',')}")
+      Pathname.new("/#{names.join(',')}")
     end
     memoize :path
 
@@ -21,31 +21,30 @@ module Elasticsearch
     # @api private
     #
     def refresh
-      Command::Refresh.run(connection, path)
+      Command::Index::Refresh.run(self)
       self
+    end
+
+    # Return status of cluster
+    #
+    # @return [Status]
+    #
+    # @api private
+    #
+    def status
+      Command::Index::Status.run(self)
     end
 
     # Read from indices
     #
-    # @return [Result]
-    #
-    # @api private
-    #
-    def read(query)
-      Command::Reader.new(connection, path, query)
-    end
-
-    # Return tuples from query
-    #
     # @param [Hash] query
-    #   the query in elasticsearch format as a hash
-    #
-    # @api private
     #
     # @return [Result]
     #
+    # @api private
+    #
     def read(query)
-      Command::Read.run(connection, path, query)
+      Command::Read.run(self, query)
     end
 
     # Control all indices of a cluster
