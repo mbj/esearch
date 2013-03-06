@@ -19,7 +19,9 @@ describe Elasticsearch do
     end
 
     index_a = cluster.index('test-a')
+    index_a.exist?.should be(false)
     index_a.create(SINGLE_NODE_SETTINGS)
+    index_a.exist?.should be(true)
 
     index_b = cluster.index('test-b')
     index_b.create(SINGLE_NODE_SETTINGS)
@@ -42,5 +44,7 @@ describe Elasticsearch do
 
     index_a.type('type-a').document(result_a.id).delete
 
+    document = index_b.type('type-b').document(result_b.id).get
+    document.source.should eql('foo' => 'baz')
   end
 end

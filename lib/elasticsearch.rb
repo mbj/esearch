@@ -16,8 +16,9 @@ module Elasticsearch
 end
 
 require 'elasticsearch/connection'
-require 'elasticsearch/type'
 require 'elasticsearch/cluster'
+require 'elasticsearch/type'
+require 'elasticsearch/document'
 require 'elasticsearch/indices'
 require 'elasticsearch/result'
 require 'elasticsearch/result/hit'
@@ -30,6 +31,7 @@ require 'elasticsearch/index'
 require 'elasticsearch/presenter'
 require 'elasticsearch/presenter/result'
 require 'elasticsearch/presenter/command'
+require 'elasticsearch/presenter/document'
 require 'elasticsearch/presenter/status'
 require 'elasticsearch/presenter/cluster'
 require 'elasticsearch/presenter/hit'
