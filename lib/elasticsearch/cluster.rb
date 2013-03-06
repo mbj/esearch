@@ -30,7 +30,7 @@ module Elasticsearch
 
     # Return present indexes
     #
-    # @param [Enumerable<Index>]
+    # @return [Enumerable<Index>]
     #
     # @api private
     #

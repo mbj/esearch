@@ -45,6 +45,8 @@ module Elasticsearch
         # @return [false]
         #   otherwise
         #
+        # @api private
+        #
         expose_primitive(:ok, :ok?)
 
         class Index < self
