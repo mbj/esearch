@@ -16,8 +16,9 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.get_query('/_cluster/health', options)
+          connection.get('/_cluster/health', {}, options)
         end
+        memoize :response
 
       end
 

@@ -19,7 +19,7 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.post_body_query(subject.path, document, options)
+          connection.post(subject.path, document, options)
         end
         memoize :response
 
