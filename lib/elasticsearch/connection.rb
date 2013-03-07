@@ -15,32 +15,22 @@ module Elasticsearch
       new(Faraday.new(uri), logger)
     end
 
-    [:put, :post, :get, :delete, :head].each do |verb|
-      define_method(verb) do |path, *args|
-        http_request(verb, path, *args)
-      end
-    end
 
-  private
-
-    # Run http request
+    # Run request 
     #
-    # @param [Symbol] verb
-    # @param [#to_s] path
-    # @param [Hash] body
-    # @param [Hash] query
+    # @param [Command::Request] request
     #
-    # @return [Faraday::Response]
+    # @return [Faraday::Request]
     #
     # @api private
     #
-    def http_request(verb, path, body = {}, query = {})
-      logger.debug { "#{verb.to_s.upcase} #{path} : #{query.inspect} : #{body.inspect}" }
-      response = raw_connection.public_send(verb, path.to_s) do |request|
-        request.body = MultiJson.dump(body)
-      end
+    def run(request)
+      logger = self.logger
+      logger.debug { request.log_string }
+      response = request.run(raw_connection)
       logger.debug { response.status.to_s }
       response
     end
+
   end
 end

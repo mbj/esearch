@@ -9,16 +9,17 @@ module Elasticsearch
 
         PRESENTER = Presenter::Cluster::Health
 
-        # Return response
+      private
+
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.get('/_cluster/health', {}, options)
+        def request
+          Request.get('/_cluster/health', {}, options)
         end
-        memoize :response
 
       end
 

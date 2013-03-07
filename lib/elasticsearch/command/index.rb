@@ -12,16 +12,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.put(subject_path, settings)
+        def request
+          Request.put(subject_path, settings)
         end
-        memoize :response
 
       end
 
@@ -32,16 +31,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.delete(subject_path)
+        def request
+          Request.delete(subject_path)
         end
-        memoize :response
 
       end
 
@@ -52,16 +50,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.post(subject_path.join('_refresh'))
+        def request
+          Request.post(subject_path.join('_refresh'))
         end
-        memoize :response
 
       end
     end

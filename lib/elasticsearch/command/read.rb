@@ -1,32 +1,22 @@
 module Elasticsearch
   class Command
-    # Read command
+    # Search command
     class Read < self
       include Composition.new(:subject, :query)
 
-      # Return result
-      #
-      # @return [Presenter::Result]
-      #
-      # @api private
-      #
-      def result
-        assert_success
-        Presenter::Result.new(parsed_json)
-      end
+      PRESENTER = Presenter::Result
 
     private
 
-      # Return response
+      # Return request
       #
-      # @return [Faraday::Response]
+      # @return [Request]
       #
       # @api private
       #
-      def response
-        connection.get(subject_path.join('_search'), query)
+      def request
+        Request.get(subject_path.join('_search'), query)
       end
-      memoize :response
 
     end
   end

@@ -22,16 +22,15 @@ module Elasticsearch
 
     private
 
-      # Return response
+      # Return request
       #
-      # @return [Faraday::Response]
+      # @return [Request]
       #
       # @api private
       #
-      def response
-        connection.head(subject_path)
+      def request
+        Request.head(subject_path)
       end
-      memoize :response
 
     end
   end

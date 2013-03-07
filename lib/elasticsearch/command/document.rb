@@ -15,16 +15,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.post(subject_path, document, effective_options)
+        def request
+          Request.post(subject_path, document, effective_options)
         end
-        memoize :response
 
         # Return effective options
         #
@@ -56,16 +55,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Presponse]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.get(subject_path)
+        def request
+          Request.get(subject_path)
         end
-        memoize :response
 
       end
 
@@ -76,16 +74,15 @@ module Elasticsearch
 
       private
 
-        # Return response
+        # Return request
         #
-        # @return [Faraday::Response]
+        # @return [Request]
         #
         # @api private
         #
-        def response
-          connection.delete(subject_path)
+        def request
+          Request.delete(subject_path)
         end
-        memoize :response
 
       end
 

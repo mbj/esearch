@@ -3,6 +3,9 @@ module Elasticsearch
   class Command 
     include Adamantium::Flat, AbstractType, Composition.new(:subject)
 
+    EXPECTED_STATI    = [ 200 ].freeze
+    JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
+
     # Run command
     #
     # @return [Object]
@@ -23,9 +26,6 @@ module Elasticsearch
       assert_success
       presenter.new(parsed_json)
     end
-
-    EXPECTED_STATI    = [ 200 ].freeze
-    JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
 
   private
 
@@ -150,7 +150,10 @@ module Elasticsearch
     #
     # @api private
     #
-    abstract_method :response
+    def response
+      connection.run(request)
+    end
+    memoize :response
 
   end
 end

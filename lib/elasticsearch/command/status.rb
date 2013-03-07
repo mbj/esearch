@@ -9,23 +9,14 @@ module Elasticsearch
 
     private
 
-      # Return response
+      # Return request
       #
-      # @return [Faraday::Response]
-      #
-      # @api private
-      #
-      def response
-        connection.get(subject_path.join('_status'))
-      end
-      memoize :response
-
-      # Return connection
+      # @return [Request]
       #
       # @api private
       #
-      def connection
-        subject.connection
+      def request
+        Request.get(subject_path.join('_status'))
       end
 
     end

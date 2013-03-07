@@ -8,8 +8,10 @@ UncommunicativeParameterName:
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
 LargeClass:
-  max_methods: 11
-  exclude: []
+  max_methods: 10
+  exclude:
+  - Elasticsearch::Command # 12 methods, TODO: Bring down to 10. Extraction of Response class!
+  - Elasticsearch::Request # 4 instance variables. Acceptable as this is a DTO
   enabled: true
   max_instance_variables: 3
 UncommunicativeMethodName:
@@ -22,7 +24,8 @@ UncommunicativeMethodName:
   - !ruby/regexp /[A-Z]/
 LongParameterList:
   max_params: 2 
-  exclude: []
+  exclude:
+  - Elasticsearch::Request#initialize # 4 parameters, acceptable it is a DTO
   enabled: true
   overrides: {}
 FeatureEnvy:
@@ -55,7 +58,8 @@ LongMethod:
   exclude: []
   enabled: true
 Duplication:
-  allow_calls: []
+  allow_calls: 
+  - logger.debug
   exclude: []
   enabled: true
   max_calls: 1
