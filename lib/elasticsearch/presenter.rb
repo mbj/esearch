@@ -14,7 +14,7 @@ module Elasticsearch
     #
     def self.expose_tagged_collection(key, presenter)
       key = key.to_s # caches string in closure ;)
-      define_method(key) do
+      define_method(key) do ||
         raw.fetch(key).map do |name, element| 
           presenter.new(element.merge('name' => name))
         end
@@ -34,7 +34,7 @@ module Elasticsearch
     #
     def self.expose_primitive(key, method_name = key)
       key = key.to_s # caches string in closure ;)
-      define_method(method_name) do
+      define_method(method_name) do ||
         raw.fetch(key)
       end
     end
