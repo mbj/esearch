@@ -61,6 +61,7 @@ module Elasticsearch
         def response
           connection.post(subject_path.join('_refresh'))
         end
+        memoize :response
 
       end
     end
