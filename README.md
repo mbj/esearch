@@ -21,8 +21,6 @@ There is currently no gem release. Use git source in your Gemfile:
 gem 'elasticsearch', :git => 'https://github.com/mbj/elasticsearch'
 ```
 
-Or use ```:github => 'mbj/elasticsearch'``` if you prefer unencrypted protocols.
-
 Examples
 --------
 
