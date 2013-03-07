@@ -1,7 +1,7 @@
 module Elasticsearch
   class Presenter
-    # Presenter for query result
-    class Result < self
+    # Presenter for search result
+    class Search < self
 
       # Return facets
       #

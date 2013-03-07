@@ -35,10 +35,10 @@ describe Elasticsearch do
 
     indices.refresh
 
-    result = index_a.read({:query => { :match_all => {}}})
+    result = index_a.search({:query => { :match_all => {}}})
     result.hits.map(&:source).should eql([{'foo' => 'bar'}])
 
-    result = indices.read({:query => { :match_all => {}}})
+    result = indices.search({:query => { :match_all => {}}})
 
     result.hits.map(&:source).to_set.should eql([{'foo' => 'bar'}, {'foo' => 'baz'}].to_set)
 

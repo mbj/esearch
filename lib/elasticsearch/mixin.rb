@@ -102,8 +102,8 @@ module Elasticsearch
       #
       # @api private
       #
-      def read(query)
-        Command::Read.run(self, query)
+      def search(query)
+        Command::Search.run(self, query)
       end
 
     end

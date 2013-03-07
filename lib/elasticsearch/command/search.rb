@@ -1,10 +1,10 @@
 module Elasticsearch
   class Command
     # Search command
-    class Read < self
+    class Search < self
       include Composition.new(:subject, :query)
 
-      PRESENTER = Presenter::Result
+      PRESENTER = Presenter::Search
 
     private
 
