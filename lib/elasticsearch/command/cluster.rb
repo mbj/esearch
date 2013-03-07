@@ -5,7 +5,7 @@ module Elasticsearch
 
       # Command for accessing health
       class Health < self
-        include Composition.new(:context, :options)
+        include Concord.new(:context, :options)
 
         PRESENTER = Presenter::Cluster::Health
 

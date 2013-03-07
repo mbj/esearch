@@ -5,7 +5,7 @@ module Elasticsearch
 
       # Create index comand
       class Create < self
-        include Composition.new(:context, :settings)
+        include Concord.new(:context, :settings)
 
         EXPECT_STATUS = [ 201 ].freeze
         PRESENTER = Presenter::Index::Create

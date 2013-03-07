@@ -1,7 +1,7 @@
 module Elasticsearch
   # Abstract base class for json response presenters
   class Presenter
-    include Adamantium, AbstractType, Composition.new(:raw)
+    include Adamantium, AbstractType, Concord.new(:raw)
 
     # Define tagged collection exposer
     #

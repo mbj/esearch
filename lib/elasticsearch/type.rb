@@ -1,7 +1,7 @@
 module Elasticsearch
   # Interface to a specific elasticsearch type
   class Type
-    include Adamantium::Flat, Composition.new(:es_index, :name)
+    include Adamantium::Flat, Concord.new(:es_index, :name)
     include Mixin::Exist, Mixin::Document, Mixin::Search
 
     # Return document handler

@@ -2,7 +2,7 @@ module Elasticsearch
   # Handle for an elasticsearch cluster
   class Cluster
 
-    include Adamantium::Flat, Composition.new(:connection)
+    include Adamantium::Flat, Concord.new(:connection)
 
     # Return handler for index
     #

@@ -6,7 +6,7 @@ module Elasticsearch
 
       # Document index command
       class Index < self
-        include Composition.new(:context, :document, :options)
+        include Concord.new(:context, :document, :options)
 
         EXPECTED_STATI = [ 200, 201 ]
         PRESENTER = Presenter::Document::Operation::Index

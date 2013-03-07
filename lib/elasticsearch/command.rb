@@ -1,7 +1,7 @@
 module Elasticsearch
   # Abstract base class for elasticsearch commands
   class Command 
-    include Adamantium::Flat, AbstractType, Composition.new(:context)
+    include Adamantium::Flat, AbstractType, Concord.new(:context)
 
     EXPECTED_STATI    = [ 200 ].freeze
     JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze

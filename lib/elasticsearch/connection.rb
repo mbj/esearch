@@ -1,7 +1,7 @@
 module Elasticsearch
   # Connection to an elasticsearch cluster
   class Connection
-    include Adamantium::Flat, Composition.new(:raw_connection, :logger)
+    include Adamantium::Flat, Concord.new(:raw_connection, :logger)
 
     # Return connection
     #

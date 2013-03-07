@@ -1,7 +1,7 @@
 module Elasticsearch
   # Handler for document
   class Document
-    include Adamantium::Flat, Composition.new(:type, :id)
+    include Adamantium::Flat, Concord.new(:type, :id)
     include Mixin::Exist, Mixin::Document
 
     # Delete document

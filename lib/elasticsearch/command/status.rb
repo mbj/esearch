@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Command to return cluster status
     class Status < self
-      include Composition.new(:context)
+      include Concord.new(:context)
 
       PRESENTER = Presenter::Status
 

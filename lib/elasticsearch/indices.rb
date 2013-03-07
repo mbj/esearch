@@ -1,7 +1,7 @@
 module Elasticsearch
   # Handler for set of indices
   class Indices
-    include Adamantium::Flat, Composition.new(:connection, :names)
+    include Adamantium::Flat, Concord.new(:connection, :names)
     include Mixin::Exist, Mixin::Index, Mixin::Search
 
     # Return path
@@ -17,7 +17,7 @@ module Elasticsearch
 
     # Control all indices of a cluster
     class All < self
-      include Composition.new(:connection)
+      include Concord.new(:connection)
 
       # Return path
       #

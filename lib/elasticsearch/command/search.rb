@@ -2,7 +2,7 @@ module Elasticsearch
   class Command
     # Search command
     class Search < self
-      include Composition.new(:context, :query)
+      include Concord.new(:context, :query)
 
       PRESENTER = Presenter::Search
 

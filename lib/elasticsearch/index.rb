@@ -1,7 +1,7 @@
 module Elasticsearch
   # Driver for specific index
   class Index
-    include Adamantium::Flat, Composition.new(:connection, :name)
+    include Adamantium::Flat, Concord.new(:connection, :name)
     include Mixin::Exist, Mixin::Search, Mixin::Index
 
     # Cretate remote index
