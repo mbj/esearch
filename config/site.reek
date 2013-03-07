@@ -59,7 +59,7 @@ LongMethod:
   enabled: true
 Duplication:
   allow_calls: 
-  - logger.debug
+  - util.debug
   exclude: []
   enabled: true
   max_calls: 1
