@@ -8,24 +8,22 @@ module Elasticsearch
     #
     # @param [Hash] settings
     #
-    # @return [self]
+    # @return [Presenter::Index::Create]
     #
     # @api private
     #
     def create(settings)
       Command::Index::Create.run(self, settings)
-      self
     end
 
     # Delete remote index
     #
-    # @return [self]
+    # @return [Presenter::Index::Delete]
     #
     # @api private
     #
     def delete
       Command::Index::Delete.run(self)
-      self
     end
 
     # Return type for index
