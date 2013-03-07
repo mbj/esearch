@@ -14,8 +14,8 @@ describe Elasticsearch do
   let(:cluster) { Elasticsearch::Cluster.connect(uri, Logger.new($stderr, :debug)) }
 
   it 'should work' do
-    cluster.present_indices.each do |index|
-      index.delete
+    cluster.all_indices.status.indices.map do |index|
+      cluster.index(index.name).delete
     end
 
     index_a = cluster.index('test-a')

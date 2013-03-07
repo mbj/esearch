@@ -28,18 +28,6 @@ module Elasticsearch
       Indices.new(connection, names)
     end
 
-    # Return present indexes
-    #
-    # @return [Enumerable<Index>]
-    #
-    # @api private
-    #
-    def present_indices
-      all_indices.status.indices.map do |index|
-        self.index(index.name)
-      end
-    end
-
     # Return cluster health
     #
     # @param [Hash] options
