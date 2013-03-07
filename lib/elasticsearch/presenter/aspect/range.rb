@@ -30,7 +30,7 @@ module Elasticsearch
         # @api private
         #
         def to
-          data['to']
+          raw['to']
         end
 
         # Return total count
