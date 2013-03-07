@@ -25,10 +25,10 @@ module Elasticsearch
     # @api private
     #
     def run(request)
-      logger = self.logger
-      logger.debug { request.log_string }
+      util = logger
+      util.debug { request.log_string }
       response = request.run(raw_connection)
-      logger.debug { response.status.to_s }
+      util.debug { response.status.to_s }
       response
     end
 
