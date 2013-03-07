@@ -11,7 +11,7 @@ module Elasticsearch
     # @return [self]
     #
     def refresh
-      Command::Refresh::Index.run(self)
+      Command::Index::Refresh.run(self)
       self
     end
 
