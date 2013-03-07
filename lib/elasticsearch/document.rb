@@ -27,6 +27,32 @@ module Elasticsearch
       Command::Document::Index.run(self, document, options)
     end
 
+    # Create document
+    #
+    # @param [Hash] document
+    # @param [Hash] options
+    #
+    # @return [Presenter::Command::Document::Index]
+    #
+    # @api private
+    #
+    def index_create(document, options = {})
+      Command::Document::Index::Create.run(self, document, options)
+    end
+
+    # Update document
+    #
+    # @param [Hash] document
+    # @param [Hash] options
+    #
+    # @return [Presenter::Command::Document::Index]
+    #
+    # @api private
+    #
+    def index_update(document, options = {})
+      Command::Document::Index::Update.run(self, document, options)
+    end
+
     # Return document
     #
     # @return [Presenter::Command::Document::Get]
