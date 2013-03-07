@@ -1,7 +1,7 @@
 module Elasticsearch
   # Abstract base class for elasticsearch commands
   class Command 
-    include Adamantium::Flat, AbstractType, Composition.new(:subject)
+    include Adamantium::Flat, AbstractType, Composition.new(:context)
 
     EXPECTED_STATI    = [ 200 ].freeze
     JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
@@ -61,17 +61,17 @@ module Elasticsearch
     # @api private
     #
     def connection
-      subject.connection
+      context.connection
     end
 
-    # Return subject path
+    # Return context path
     #
     # @return [Pathname]
     #
     # @api private
     #
-    def subject_path
-      subject.path
+    def context_path
+      context.path
     end
 
     # Return response content type

@@ -5,7 +5,7 @@ module Elasticsearch
 
       # Create index comand
       class Create < self
-        include Composition.new(:subject, :settings)
+        include Composition.new(:context, :settings)
 
         EXPECT_STATUS = [ 201 ].freeze
         PRESENTER = Presenter::Index::Create
@@ -19,7 +19,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.put(subject_path, settings)
+          Request.put(context_path, settings)
         end
 
       end
@@ -38,7 +38,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.delete(subject_path)
+          Request.delete(context_path)
         end
 
       end
@@ -57,7 +57,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.post(subject_path.join('_refresh'))
+          Request.post(context_path.join('_refresh'))
         end
 
       end

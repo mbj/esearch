@@ -2,7 +2,7 @@ module Elasticsearch
   class Command
     # Search command
     class Search < self
-      include Composition.new(:subject, :query)
+      include Composition.new(:context, :query)
 
       PRESENTER = Presenter::Search
 
@@ -15,7 +15,7 @@ module Elasticsearch
       # @api private
       #
       def request
-        Request.get(subject_path.join('_search'), query)
+        Request.get(context_path.join('_search'), query)
       end
 
     end

@@ -3,7 +3,7 @@ module Elasticsearch
 
     # Command to return cluster status
     class Status < self
-      include Composition.new(:subject)
+      include Composition.new(:context)
 
       PRESENTER = Presenter::Status
 
@@ -16,7 +16,7 @@ module Elasticsearch
       # @api private
       #
       def request
-        Request.get(subject_path.join('_status'))
+        Request.get(context_path.join('_status'))
       end
 
     end

@@ -29,7 +29,7 @@ module Elasticsearch
       # @api private
       #
       def request
-        Request.head(subject_path)
+        Request.head(context_path)
       end
 
     end

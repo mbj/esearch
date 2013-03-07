@@ -6,7 +6,7 @@ module Elasticsearch
 
       # Document index command
       class Index < self
-        include Composition.new(:subject, :document, :options)
+        include Composition.new(:context, :document, :options)
 
         EXPECTED_STATI = [ 200, 201 ]
         PRESENTER = Presenter::Document::Operation::Index
@@ -22,7 +22,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.post(subject_path, document, effective_options)
+          Request.post(context_path, document, effective_options)
         end
 
         # Return effective options
@@ -62,7 +62,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.get(subject_path)
+          Request.get(context_path)
         end
 
       end
@@ -81,7 +81,7 @@ module Elasticsearch
         # @api private
         #
         def request
-          Request.delete(subject_path)
+          Request.delete(context_path)
         end
 
       end
