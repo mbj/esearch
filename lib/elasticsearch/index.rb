@@ -2,18 +2,7 @@ module Elasticsearch
   # Driver for specific index
   class Index
     include Adamantium::Flat, Composition.new(:connection, :name)
-    include Exist
-
-    # Refresh index
-    #
-    # @api private
-    #
-    # @return [self]
-    #
-    def refresh
-      Command::Index::Refresh.run(self)
-      self
-    end
+    include Mixin::Exist, Mixin::Search, Mixin::Index
 
     # Cretate remote index
     #
@@ -37,16 +26,6 @@ module Elasticsearch
     def delete
       Command::Index::Delete.run(self)
       self
-    end
-
-    # Return result
-    #
-    # @param [Hash] query
-    #
-    # @api private
-    #
-    def read(query)
-      Command::Read.run(self, query)
     end
 
     # Return type for index

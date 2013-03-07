@@ -2,7 +2,7 @@ module Elasticsearch
   # Handler for document
   class Document
     include Adamantium::Flat, Composition.new(:type, :id)
-    include Exist
+    include Mixin::Exist, Mixin::Document
 
     # Delete document
     #
@@ -12,45 +12,6 @@ module Elasticsearch
     #
     def delete
       Command::Document::Delete.run(self)
-    end
-
-    # Index document
-    #
-    # @param [Hash] document
-    # @param [Hash] options
-    #
-    # @return [Presenter::Command::Document::Index]
-    #
-    # @api private
-    #
-    def index(document, options = {})
-      Command::Document::Index.run(self, document, options)
-    end
-
-    # Create document
-    #
-    # @param [Hash] document
-    # @param [Hash] options
-    #
-    # @return [Presenter::Command::Document::Index]
-    #
-    # @api private
-    #
-    def index_create(document, options = {})
-      Command::Document::Index::Create.run(self, document, options)
-    end
-
-    # Update document
-    #
-    # @param [Hash] document
-    # @param [Hash] options
-    #
-    # @return [Presenter::Command::Document::Index]
-    #
-    # @api private
-    #
-    def index_update(document, options = {})
-      Command::Document::Index::Update.run(self, document, options)
     end
 
     # Return document
