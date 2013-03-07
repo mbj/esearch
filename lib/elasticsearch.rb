@@ -5,7 +5,6 @@ require 'equalizer'
 require 'concord'
 require 'abstract_type'
 require 'null_logger'
-require 'response'
 
 # Library namespace
 module Elasticsearch
