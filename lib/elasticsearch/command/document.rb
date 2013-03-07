@@ -11,6 +11,8 @@ module Elasticsearch
         EXPECTED_STATI = [ 200, 201 ]
         PRESENTER = Presenter::Document::Operation::Index
 
+        FORCE_OPTIONS = {}
+
       private
 
         # Return response
@@ -20,48 +22,30 @@ module Elasticsearch
         # @api private
         #
         def response
-          connection.post(subject_path, document, options)
+          connection.post(subject_path, document, effective_options)
         end
         memoize :response
+
+        # Return effective options
+        #
+        # @return [Hash]
+        #
+        # @api private
+        #
+        def effective_options
+          options.merge(self.class::FORCE_OPTIONS)
+        end
 
         # Document index update command
         class Update < self
           EXPECTED_STATI = [ 200 ]
-          PRESENTER = Presenter::Document::Operation::Index
-
-        private
-
-          # Return response
-          #
-          # @return [Faraday::Response]
-          #
-          # @api private
-          #
-          def response
-            connection.post(subject_path, document, options.merge(:op_type => :create))
-          end
-          memoize :response
-
+          FORCE_OPTIONS = { :op_type => :create }.freeze
         end
 
         # Document index create command
         class Create < self
           EXPECTED_STATI = [ 201 ]
-          PRESENTER = Presenter::Document::Operation::Index
-
-        private
-
-          # Return response
-          #
-          # @return [Faraday::Response]
-          #
-          # @api private
-          #
-          def response
-            connection.post(subject_path, document, options.merge(:op_type => :create))
-          end
-          memoize :response
-
+          FORCE_OPTIONS = { :op_type => :update }.freeze
         end
       end
 
