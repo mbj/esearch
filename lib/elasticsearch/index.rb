@@ -2,20 +2,7 @@ module Elasticsearch
   # Driver for specific index
   class Index
     include Adamantium::Flat, Composition.new(:connection, :name)
-
-    # Test if index does exist
-    #
-    # @return [true]
-    #   if index exists
-    #
-    # @return [false]
-    #   otherwise
-    #
-    # @api private
-    #
-    def exist?
-      Command::Exist.run(self)
-    end
+    include Exist
 
     # Refresh index
     #

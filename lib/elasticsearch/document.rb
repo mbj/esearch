@@ -2,20 +2,7 @@ module Elasticsearch
   # Handler for document
   class Document
     include Adamantium::Flat, Composition.new(:type, :id)
-
-    # Test if index does exist
-    #
-    # @return [true]
-    #   if index exists
-    #
-    # @return [false]
-    #   otherwise
-    #
-    # @api private
-    #
-    def exist?
-      Command::Exist.run(self)
-    end
+    include Exist
 
     # Delete document
     #

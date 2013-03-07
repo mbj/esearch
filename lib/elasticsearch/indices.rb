@@ -2,6 +2,7 @@ module Elasticsearch
   # Handler for set of indices
   class Indices
     include Adamantium::Flat, Composition.new(:connection, :names)
+    include Exist
 
     # Return path
     #

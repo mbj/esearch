@@ -15,6 +15,7 @@ module Elasticsearch
   class ProtocolError < StandardError; end
 end
 
+require 'elasticsearch/exist'
 require 'elasticsearch/connection'
 require 'elasticsearch/cluster'
 require 'elasticsearch/type'
