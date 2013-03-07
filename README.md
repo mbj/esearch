@@ -18,9 +18,6 @@ Installation
 There is currently no gem release. Use git source in your Gemfile:
 
 ```ruby
-# Unreleased support library
-gem 'composition', :git => 'https://github.com/mbj/composition'
-# The actual lib
 gem 'elasticsearch', :git => 'https://github.com/mbj/elasticsearch'
 ```
 
