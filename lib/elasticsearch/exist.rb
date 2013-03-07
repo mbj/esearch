@@ -2,6 +2,7 @@ module Elasticsearch
 
   # Mixin for exist command
   module Exist
+
     # Test if index does exist
     #
     # @return [true]
@@ -15,5 +16,6 @@ module Elasticsearch
     def exist?
       Command::Exist.run(self)
     end
+
   end
 end
