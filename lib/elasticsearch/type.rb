@@ -30,6 +30,38 @@ module Elasticsearch
       Command::Document::Index.run(self, document, options)
     end
 
+    # Create indexed document
+    #
+    # @param [Document] document
+    # @param [Hash] options
+    #
+    # @api private
+    #
+    def index_create(document, options = {})
+      Command::Document::Index::Create.run(self, document, options)
+    end
+
+    # Update indexed document
+    #
+    # @param [Document] document
+    # @param [Hash] options
+    #
+    # @api private
+    #
+    def index_update(document, options = {})
+      Command::Document::Index::Create.run(self, document, options)
+    end
+
+    # Return result
+    #
+    # @param [Hash] query
+    #
+    # @api private
+    #
+    def read(query)
+      Command::Read.run(self, query)
+    end
+
     # Return document handler
     #
     # @param [String] id
