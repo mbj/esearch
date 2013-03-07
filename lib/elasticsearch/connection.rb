@@ -18,9 +18,11 @@ module Elasticsearch
     [:put, :post, :get, :delete, :head].each do |verb|
       define_method(verb) do |path, body = {}, query = {}|
         logger.debug { "#{verb.to_s.upcase} #{path} : #{query.inspect} : #{body.inspect}" }
-        raw_connection.public_send(verb, path.to_s) do |request|
+        response = raw_connection.public_send(verb, path.to_s) do |request|
           request.body = MultiJson.dump(body)
         end
+        logger.debug { response.status.to_s }
+        response
       end
     end
   end
