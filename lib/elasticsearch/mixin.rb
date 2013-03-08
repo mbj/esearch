@@ -60,7 +60,7 @@ module Elasticsearch
       # @api private
       #
       def index_update(document, options = {})
-        Command::Document::Index::Create.run(self, document, options)
+        Command::Document::Index::Update.run(self, document, options)
       end
 
     end
@@ -76,7 +76,6 @@ module Elasticsearch
       #
       def refresh
         Command::Index::Refresh.run(self)
-        self
       end
 
       # Return status of cluster
