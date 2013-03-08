@@ -138,7 +138,7 @@ module Elasticsearch
     #
     def parsed_json
       unless json_content_type?
-        raise ProtocolError, "Expected json body, but got: #{content_type}"
+        raise ProtocolError, "Expected json content_type, but got: #{content_type.inspect}"
       end
       MultiJson.load(response.body)
     end

@@ -16,12 +16,27 @@ module CommandHelper
 
       it { should be(result) }
     end
+
+    def expect_presenter(presenter) 
+      let(:context)    { mock('Context', :connection => connection, :path => Pathname.new('/foo')) }
+      let(:connection) { mock('Connection')                                                        }
+
+      let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
+      let(:response)   { mock('Response', :frozen? => true, :status => 200, :headers => headers, :body => '{}') }
+
+      before do
+        connection.should_receive(:run).with(expected_request).and_return(response)
+      end
+
+      it { should eql(presenter.new({})) }
+    end
   end
 
   def self.included(descendant)
     descendant.extend(ClassMethods)
   end
 end
+
 
 RSpec.configure do |config|
   config.include(CommandHelper)
