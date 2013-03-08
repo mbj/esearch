@@ -22,7 +22,11 @@ module CommandHelper
       let(:connection) { mock('Connection')                                                        }
 
       let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
-      let(:response)   { mock('Response', :frozen? => true, :status => 200, :headers => headers, :body => '{}') }
+      let(:response)   { mock('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
+
+      let(:status)     { 200 }
+
+      yield if block_given?
 
       before do
         connection.should_receive(:run).with(expected_request).and_return(response)
