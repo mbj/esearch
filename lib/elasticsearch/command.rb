@@ -113,7 +113,7 @@ module Elasticsearch
     # @api private
     #
     def raise_status_error
-      raise "expected response stati: #{expected_response_stati.inspect} but got: #{response.status}, remote message: #{remote_message}"
+      raise ProtocolError, "expected response stati: #{expected_response_stati.inspect} but got: #{response.status}, remote message: #{remote_message.inspect}"
     end
 
     # Return remote message

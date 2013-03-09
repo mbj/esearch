@@ -52,7 +52,7 @@ describe Elasticsearch::Command, '#result' do
 
     context 'with json body' do
       it 'should raise error' do
-        expect { subject }.to raise_error('expected response stati: [200] but got: 201, remote message: {}')
+        expect { subject }.to raise_error(Elasticsearch::ProtocolError, 'expected response stati: [200] but got: 201, remote message: {}')
       end
     end
 
@@ -61,7 +61,7 @@ describe Elasticsearch::Command, '#result' do
       let(:body)         { 'message'   }
 
       it 'should raise error' do
-        expect { subject }.to raise_error('expected response stati: [200] but got: 201, remote message: message')
+        expect { subject }.to raise_error(Elasticsearch::ProtocolError, 'expected response stati: [200] but got: 201, remote message: "message"')
       end
     end
   end
