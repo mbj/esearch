@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name        = 'elasticsearch'
-  gem.version     = '0.0.1'
+  gem.version     = '0.1.0'
   gem.authors     = [ 'Markus Schirp' ]
   gem.email       = [ 'mbj@seonic.net' ]
   gem.description = 'Elasticsearch driver for ruby'
