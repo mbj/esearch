@@ -18,7 +18,7 @@ module Elasticsearch
       def each(&block)
         return to_enum unless block_given?
 
-        raw_hits.map do |hit|
+        hits.each do |hit|
           yield Hit.new(hit)
         end
 
@@ -32,7 +32,7 @@ module Elasticsearch
       # @api private
       #
       def size
-        raw_hits.size
+        hits.size
       end
       
       # Return total amount of hits in the query
@@ -51,9 +51,8 @@ module Elasticsearch
       #
       # @api private
       #
-      def raw_hits
-        raw.fetch('hits')
-      end
+      expose_primitive(:hits)
+      private :hits
 
     end
   end

@@ -4,6 +4,8 @@ module Elasticsearch
     # Base class for facets in results
     class Facet < self
 
+      TYPE_KEY = '_type'.freeze
+
       # Build facet from raw
       #
       # @param [Hash] raw
@@ -13,7 +15,7 @@ module Elasticsearch
       # @api private
       #
       def self.build(raw)
-        type = raw.fetch('_type')
+        type = raw.fetch(TYPE_KEY)
         get(type).new(raw)
       end
 
@@ -30,6 +32,7 @@ module Elasticsearch
           raise "Facet with type #{type.inspect} is not known"
         end
       end
+      private_class_method :get
 
       REGISTRY = {}
 
@@ -45,24 +48,6 @@ module Elasticsearch
         REGISTRY[type]=self
       end
       private_class_method :register
-
-      # Return aspects
-      #
-      # @return [Enumerable<Aspect]
-      #
-      # @api private
-      #
-      abstract_method :aspects
-
-      # Return size of aspects
-      #
-      # @return [Fixnum]
-      #
-      # @api private
-      #
-      def size
-        aspects.size
-      end
 
       # Enumerate aspects
       #
