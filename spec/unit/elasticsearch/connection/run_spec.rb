@@ -6,11 +6,11 @@ describe Elasticsearch::Connection, '#run' do
   let(:object) { described_class.new(connection, logger) }
 
   let(:connection) { mock('Connection')                                  }
-  let(:logger)     { Logger.new                                          }
+  let(:logger)     { DummyLogger.new                                     }
   let(:request)    { mock('Request', :log_string => 'the-logged-string') }
   let(:response)   { mock('Response', :status => 200)                    }
 
-  class Logger
+  class DummyLogger
     attr_reader :messages
 
     def initialize
