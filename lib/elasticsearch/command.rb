@@ -124,7 +124,7 @@ module Elasticsearch
     #
     def remote_message
       if json_content_type?
-        parsed_json.inspect
+        parsed_json
       else
         response.body
       end
@@ -138,7 +138,7 @@ module Elasticsearch
     #
     def parsed_json
       unless json_content_type?
-        raise ProtocolError, "Expected json content_type, but got: #{content_type.inspect}"
+        raise ProtocolError, "Expected json content type, but got: #{content_type.inspect}"
       end
       MultiJson.load(response.body)
     end
