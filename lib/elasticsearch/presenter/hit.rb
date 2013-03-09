@@ -24,9 +24,7 @@ module Elasticsearch
       #
       # @api private
       #
-      def index_name
-        raw.fetch('_index')
-      end
+      expose_primitive(:_index, :index_name)
 
       # Return type name
       #
@@ -34,9 +32,7 @@ module Elasticsearch
       #
       # @api private
       #
-      def type_name
-        raw.fetch('_type')
-      end
+      expose_primitive(:_type, :type_name)
 
       # Return id
       #
@@ -44,9 +40,7 @@ module Elasticsearch
       #
       # @api private
       #
-      def id
-        raw.fetch('_id')
-      end
+      expose_primitive(:_id, :id)
 
       # Return score
       #
@@ -54,9 +48,7 @@ module Elasticsearch
       #
       # @api private
       #
-      def score
-        raw.fetch('_score')
-      end
+      expose_primitive(:_score, :score)
 
     end
   end
