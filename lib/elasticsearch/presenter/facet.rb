@@ -34,21 +34,6 @@ module Elasticsearch
       end
       private_class_method :get
 
-      REGISTRY = {}
-
-      # Register type
-      #
-      # @param [String] type
-      #
-      # @return [undefined]
-      #
-      # @api private
-      #
-      def self.register(type)
-        REGISTRY[type]=self
-      end
-      private_class_method :register
-
       # Enumerate aspects
       #
       # @return [Enumerable<Aspect>]
@@ -56,49 +41,31 @@ module Elasticsearch
       # @api private
       #
       def aspects
-        raw.fetch(facet_key).map do |item|
-          aspect_class.new(item)
+        util = self.class
+        raw.fetch(util::FACET_KEY).map do |item|
+          util::ASPECT_CLASS.new(item)
         end
       end
       memoize :aspects
 
     private
 
-      # Return facet key
-      #
-      # @return [String]
-      #
-      # @api private
-      #
-      def facet_key
-        self.class::FACET_KEY
-      end
-
-      # Return aspect class
-      #
-      # @return [Class]
-      #
-      # @api private
-      #
-      def aspect_class
-        self.class::ASPECT_CLASS
-      end
-
       # Facet that returns range counts
       class Range < self
-        register 'range'
-
         ASPECT_CLASS = Aspect::Range
         FACET_KEY = 'ranges'.freeze
       end
 
       # Facet that returns term counts
       class Terms < self
-        register 'terms'
-
         ASPECT_CLASS = Aspect::Term
         FACET_KEY = 'terms'.freeze
       end
+
+      REGISTRY = {
+        'range' => Range,
+        'terms' => Terms
+      }.freeze
 
     end
   end

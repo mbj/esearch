@@ -4,31 +4,14 @@ module Elasticsearch
     # Base class for index operation result presenters
     class Index < self
 
-      # Mixin to define #ok?
-      module Okay
-        # Test for successful execution
-        #
-        # @return [true]
-        #   if command was successful
-        #
-        # @return [false]
-        #   otherwise
-        #
-        # @api private
-        #
-        def ok?
-          raw.fetch('ok')
-        end
-      end
-
       # Create operation presenter
       class Create < self
-        include Okay
+        expose_primitive :ok, :ok?
       end
 
       # Delete operation presenter
       class Delete < self
-        include Okay
+        expose_primitive :ok, :ok?
       end
       
       # Refresh operation presenter
