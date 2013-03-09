@@ -19,7 +19,6 @@ module Elasticsearch
           presenter.new(element.merge('name' => name))
         end
       end
-      memoize key
     end
     private_class_method :expose_tagged_collection
 
