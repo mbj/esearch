@@ -17,6 +17,20 @@ module Elasticsearch
       def source
         raw['_source']
       end
+  
+      # Return fields if present
+      #
+      # @return [Hash] 
+      #   if present
+      #
+      # @return [nil]
+      #   otherwise
+      #
+      # @api private
+      #
+      def fields
+        raw['fields']
+      end
 
       # Return index name
       #

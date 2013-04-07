@@ -1,2 +1,3 @@
 * Investigate into other transport protocols than HTTP
 * Provide Elasticsearch::Document::Version for version scoped operations
+* Expose Hit#fields
