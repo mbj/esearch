@@ -8,6 +8,7 @@ Gem::Specification.new do |gem|
   gem.description = 'Elasticsearch driver for ruby'
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/mbj/elasticsearch'
+  gem.license     = 'MIT'
 
   gem.require_paths    = [ 'lib' ]
   gem.files            = `git ls-files`.split("\n")
