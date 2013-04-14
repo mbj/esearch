@@ -21,7 +21,7 @@ module Elasticsearch
         hits.each do |hit|
           yield Hit.new(hit)
         end
-
+        
         self
       end
 
