@@ -15,8 +15,7 @@ Install the gem `elasticsearch` via your preferred method.
 Examples
 --------
 
-```
-
+```ruby
 # Settings suitable for operation on single node
 settings = {
   :settings => {
