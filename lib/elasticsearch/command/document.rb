@@ -8,7 +8,7 @@ module Elasticsearch
       class Index < self
         include Concord.new(:context, :document, :options)
 
-        EXPECTED_STATI = [ 200, 201 ]
+        EXPECTED_STATI = [ 200, 201 ].freeze
         PRESENTER = Presenter::Document::Operation::Index
 
         FORCE_OPTIONS = {}
@@ -37,13 +37,13 @@ module Elasticsearch
 
         # Document index update command
         class Update < self
-          EXPECTED_STATI = [ 200 ]
+          EXPECTED_STATI = [ 200 ].freeze
           FORCE_OPTIONS = { :op_type => :update }.freeze
         end
 
         # Document index create command
         class Create < self
-          EXPECTED_STATI = [ 201 ]
+          EXPECTED_STATI = [ 201 ].freeze
           FORCE_OPTIONS = { :op_type => :create }.freeze
         end
       end
@@ -51,7 +51,27 @@ module Elasticsearch
       # Present get document command result
       class Get < self
         
+        EXPECTED_STATI = [ 200, 404 ].freeze
         PRESENTER = Presenter::Document::Get
+
+        # Return result
+        #
+        # @return [true]
+        #   if object exists
+        #
+        # @return [false]
+        #   otherwise
+        #
+        # @api private
+        #
+        def result
+          assert_success
+          if response.status == 200
+            presenter.new(parsed_json)
+          else
+            nil
+          end
+        end
 
       private
 

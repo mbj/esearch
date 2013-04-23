@@ -5,8 +5,8 @@ Devtools.init_spec_helper
 
 module CommandHelper
   module ClassMethods
-    def expect_to_run_command(command)
 
+    def expect_to_run_command(command)
       let(:connection) { mock('Connection') }
       let(:result)     { mock('Result')     }
 
@@ -17,7 +17,7 @@ module CommandHelper
       it { should be(result) }
     end
 
-    def expect_presenter(presenter) 
+    def setup_connection
       let(:context)    { mock('Context', :connection => connection, :path => Pathname.new('/foo')) }
       let(:connection) { mock('Connection')                                                        }
 
@@ -26,13 +26,31 @@ module CommandHelper
 
       let(:status)     { 200 }
 
-      yield if block_given?
-
       before do
         connection.should_receive(:run).with(expected_request).and_return(response)
       end
+    end
 
-      it { should eql(presenter.new({})) }
+    def expect_exception(exception)
+      setup_connection
+      
+      yield if block_given?
+
+      it 'should raise error' do
+        expect { subject }.to raise_error(exception)
+      end
+    end
+
+    def expect_result(result)
+      setup_connection
+
+      yield if block_given?
+
+      it { should eql(result) }
+    end
+
+    def expect_presenter(presenter, &block) 
+      expect_result(presenter.new({}), &block)
     end
   end
 
