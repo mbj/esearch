@@ -1,3 +1,7 @@
+# v0.1.3 2013-04-23
+
+* Return nil on Document#get when document does not exist
+
 # v0.1.2 2013-04-14
 
 * Do not deep freeze presenters, fixes performance problems.
