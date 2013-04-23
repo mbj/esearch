@@ -7,7 +7,7 @@ UncommunicativeParameterName:
   - !ruby/regexp /^.$/
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
-LargeClass:
+TooManyMethods:
   max_methods: 10
   exclude:
   - Elasticsearch::Command # 12 methods, TODO: Bring down to 10. Extraction of Response class!
@@ -53,11 +53,11 @@ NestedIterators:
   - Elasticsearch::Presenter#self.expose_tagged_collection # 2 levels
   enabled: true
   max_allowed_nesting: 1
-LongMethod:
+TooManyStatements:
   max_statements: 5
   exclude: []
   enabled: true
-Duplication:
+DuplicateMethodCall:
   allow_calls: 
   - util.debug
   exclude: []
@@ -78,7 +78,7 @@ UncommunicativeVariableName:
   - !ruby/regexp /^.$/
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
-SimulatedPolymorphism:
+RepeatedConditional:
   exclude: []
   enabled: true
   max_ifs: 2
@@ -87,7 +87,7 @@ DataClump:
   enabled: true
   max_copies: 1
   min_clump_size: 3
-ControlCouple:
+ControlParameter:
   exclude: 
   - Elasticsearch::Index#read
   enabled: true
