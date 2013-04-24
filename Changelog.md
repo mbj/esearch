@@ -1,3 +1,7 @@
+# v0.1.4 2013-04-23
+
+* Correctly pass query params to db.
+
 # v0.1.3 2013-04-23
 
 * Return nil on Document#get when document does not exist
