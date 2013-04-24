@@ -74,6 +74,7 @@ module Elasticsearch
     #
     def run(connection)
       connection.public_send(verb, path) do |request|
+        request.params = params
         request.headers[:content_type]=Command::JSON_CONTENT_TYPE
         request.body = MultiJson.dump(body)
       end

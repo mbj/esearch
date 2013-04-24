@@ -25,7 +25,8 @@ describe Elasticsearch::Request, '#run' do
       stub.get('/some/random/path') do |env| 
         env.fetch(:request_headers).fetch('Content-Type').should eql('application/json; charset=UTF-8')
         env.fetch(:method).should be(:get)
-        env.fetch(:url).should eql(URI.parse('http:/some/random/path'))
+        env.fetch(:params).should eql(params)
+        env.fetch(:url).should eql(URI.parse('http:/some/random/path?baz=buz'))
         env.fetch(:body).should eql('{"foo":"bar"}')
         [ response_status, response_headers, response_body ]
       end
