@@ -1,3 +1,7 @@
+# v0.1.5 2013-04-24
+
+* Fix op_type query param for updates
+
 # v0.1.4 2013-04-23
 
 * Correctly pass query params to db.
