@@ -8,7 +8,7 @@ describe Elasticsearch::Command::Document::Index::Update, '.run' do
   let(:options)  { { :foo => :bar } }
 
   let(:expected_request) do
-    Elasticsearch::Request.new(:post, '/foo', document, { :foo => :bar, :op_type => :update })
+    Elasticsearch::Request.new(:post, '/foo', document, { :foo => :bar, :op_type => :index })
   end
 
   expect_presenter(Elasticsearch::Presenter::Document::Operation::Index)

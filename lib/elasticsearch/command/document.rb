@@ -38,7 +38,7 @@ module Elasticsearch
         # Document index update command
         class Update < self
           EXPECTED_STATI = [ 200 ].freeze
-          FORCE_OPTIONS = { :op_type => :update }.freeze
+          FORCE_OPTIONS = { :op_type => :index }.freeze
         end
 
         # Document index create command
