@@ -52,9 +52,9 @@ module Elasticsearch
 
     PATH = Pathname.new('/')
 
-    # Return all indices object
+    # Return handler for all indices 
     #
-    # @return [All]
+    # @return [Indices::All]
     #
     # @api private
     #

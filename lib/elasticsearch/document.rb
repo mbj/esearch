@@ -17,6 +17,10 @@ module Elasticsearch
     # Return document
     #
     # @return [Presenter::Command::Document::Get]
+    #   if foundd
+    #
+    # @return [nil]
+    #   otherwise
     #
     # @api private
     #
