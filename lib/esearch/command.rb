@@ -29,7 +29,6 @@ module Esearch
 
   private
 
-
     # Test for json content type
     #
     # @return [true]

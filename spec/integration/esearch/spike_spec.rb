@@ -2,7 +2,7 @@ require 'spec_helper'
 require 'logger'
 
 describe Esearch do
-  let(:uri) { 'http://localhost:9200' }
+  let(:uri) { ENV.fetch('ESEARCH_TEST_URI', 'http://localhost:9200') }
 
   SINGLE_NODE_SETTINGS = IceNine.deep_freeze(
     :settings => {
