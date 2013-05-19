@@ -4,6 +4,14 @@ module Esearch
     include Adamantium::Flat, Concord.new(:connection, :name)
     include Mixin::Exist, Mixin::Search, Mixin::Index
 
+    # Return connection
+    #
+    # @return [Connection]
+    #
+    # @api private
+    #
+    attr_reader :connection
+
     # Cretate remote index
     #
     # @param [Hash] settings

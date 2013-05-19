@@ -27,6 +27,14 @@ module Esearch
     class All < self
       include Concord.new(:connection)
 
+      # Return connection
+      #
+      # @return [Connection]
+      #
+      # @api private
+      #
+      attr_reader :connection
+
       # Return path
       #
       # @return [Pathname]
