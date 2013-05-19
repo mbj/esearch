@@ -1,16 +1,16 @@
-elasticsearch
-=============
+esearch
+=======
 
-[![Build Status](https://secure.travis-ci.org/mbj/elasticsearch.png?branch=master)](http://travis-ci.org/mbj/elasticsearch)
-[![Dependency Status](https://gemnasium.com/mbj/elasticsearch.png)](https://gemnasium.com/mbj/elasticsearch)
-[![Code Climate](https://codeclimate.com/github/mbj/elasticsearch.png)](https://codeclimate.com/github/mbj/elasticsearch)
+[![Build Status](https://secure.travis-ci.org/mbj/esearch.png?branch=master)](http://travis-ci.org/mbj/esearch)
+[![Dependency Status](https://gemnasium.com/mbj/esearch.png)](https://gemnasium.com/mbj/esearch)
+[![Code Climate](https://codeclimate.com/github/mbj/esearch.png)](https://codeclimate.com/github/mbj/esearch)
 
-Terminate the [elasticsearch API](http://www.elasticsearch.org/guide/reference/api/) in a friendly ruby PORO api.
+Terminate the [esearch API](http://www.esearch.org/guide/reference/api/) in a friendly ruby PORO api.
 
 Installation
 ------------
 
-Install the gem `elasticsearch` via your preferred method.
+Install the gem `esearch` via your preferred method.
 
 Examples
 --------
