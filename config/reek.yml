@@ -10,8 +10,8 @@ UncommunicativeParameterName:
 TooManyMethods:
   max_methods: 10
   exclude:
-  - Elasticsearch::Command # 12 methods, TODO: Bring down to 10. Extraction of Response class!
-  - Elasticsearch::Request # 4 instance variables. Acceptable as this is a DTO
+  - Esearch::Command # 12 methods, TODO: Bring down to 10. Extraction of Response class!
+  - Esearch::Request # 4 instance variables. Acceptable as this is a DTO
   enabled: true
   max_instance_variables: 3
 UncommunicativeMethodName:
@@ -25,7 +25,7 @@ UncommunicativeMethodName:
 LongParameterList:
   max_params: 2 
   exclude:
-  - Elasticsearch::Request#initialize # 4 parameters, acceptable it is a DTO
+  - Esearch::Request#initialize # 4 parameters, acceptable it is a DTO
   enabled: true
   overrides: {}
 FeatureEnvy:
@@ -50,7 +50,7 @@ UncommunicativeModuleName:
 NestedIterators:
   ignore_iterators: []
   exclude:
-  - Elasticsearch::Presenter#self.expose_tagged_collection # 2 levels
+  - Esearch::Presenter#self.expose_tagged_collection # 2 levels
   enabled: true
   max_allowed_nesting: 1
 TooManyStatements:
@@ -89,7 +89,7 @@ DataClump:
   min_clump_size: 3
 ControlParameter:
   exclude: 
-  - Elasticsearch::Index#read
+  - Esearch::Index#read
   enabled: true
 LongYieldList:
   max_params: 1
@@ -97,7 +97,7 @@ LongYieldList:
   enabled: true
 UnusedParameters:
   exclude:
-    - Elasticsearch::NullLogger#self.debug
-    - Elasticsearch::NullLogger#self.error
-    - Elasticsearch::NullLogger#self.info
-    - Elasticsearch::NullLogger#self.warn
+    - Esearch::NullLogger#self.debug
+    - Esearch::NullLogger#self.error
+    - Esearch::NullLogger#self.info
+    - Esearch::NullLogger#self.warn

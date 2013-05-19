@@ -1,7 +1,7 @@
 require 'spec_helper'
 require 'logger'
 
-describe Elasticsearch do
+describe Esearch do
   let(:uri) { 'http://localhost:9200' }
 
   SINGLE_NODE_SETTINGS = IceNine.deep_freeze(
@@ -11,7 +11,7 @@ describe Elasticsearch do
     }
   )
 
-  let(:cluster) { Elasticsearch::Cluster.connect(uri, Logger.new($stderr, :debug)) }
+  let(:cluster) { Esearch::Cluster.connect(uri, Logger.new($stderr, :debug)) }
 
   it 'should work' do
     cluster.all_indices.status.indices.map do |index|

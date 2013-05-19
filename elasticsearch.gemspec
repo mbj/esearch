@@ -1,11 +1,11 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |gem|
-  gem.name        = 'elasticsearch'
+  gem.name        = 'esearch'
   gem.version     = '0.1.5'
   gem.authors     = [ 'Markus Schirp' ]
   gem.email       = [ 'mbj@seonic.net' ]
-  gem.description = 'Elasticsearch driver for ruby'
+  gem.description = 'Esearch driver for ruby'
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/mbj/elasticsearch'
   gem.license     = 'MIT'

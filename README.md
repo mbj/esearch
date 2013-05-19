@@ -25,7 +25,7 @@ settings = {
 )
 
 # Connect to a cluster
-cluster = Elasticsearch::Cluster.connect(uri, Logger.new($stderr, :debug)) }
+cluster = Esearch::Cluster.connect(uri, Logger.new($stderr, :debug)) }
 
 # Create index 
 index_a = cluster.index('test-a')

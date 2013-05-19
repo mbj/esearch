@@ -1,5 +1,5 @@
 # encoding: utf-8
-require 'elasticsearch'
+require 'esearch'
 require 'devtools'
 Devtools.init_spec_helper
 
