@@ -1,3 +1,7 @@
+# v0.2.0 2013-05-19
+
+* Rename lib to esearch
+
 # v0.1.5 2013-04-24
 
 * Fix op_type query param for updates
