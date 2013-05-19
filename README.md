@@ -66,6 +66,11 @@ document = index_b.type('type-b').document(result_b.id).get
 document.source # => {'foo' => 'baz'}
 ```
 
+Compatibility
+-------------
+
+Tested under {mri,jruby,rbx} > 1.8.
+
 Credits
 -------
 
