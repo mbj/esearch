@@ -4,6 +4,14 @@ module Esearch
 
     include Adamantium::Flat, Concord.new(:connection)
 
+    # Return connection
+    #
+    # @return [Connection]
+    #
+    # @api private
+    #
+    attr_reader :connection
+
     # Return handler for index
     #
     # @param [String] name
