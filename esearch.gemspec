@@ -4,7 +4,7 @@ Gem::Specification.new do |gem|
   gem.name        = 'esearch'
   gem.version     = '0.2.0'
   gem.authors     = [ 'Markus Schirp' ]
-  gem.email       = [ 'mbj@seonic.net' ]
+  gem.email       = [ 'mbj@schirp-dso.com' ]
   gem.description = 'Esearch driver for ruby'
   gem.summary     = gem.description
   gem.homepage    = 'https://github.com/mbj/elasticsearch'
