@@ -10,9 +10,6 @@ rvm:
   - jruby-19mode
   - jruby-head
   - rbx-19mode
-matrix:
-  allow_failures:
-    - rvm: rbx-18mode # Json lib is defunct
 notifications:
   irc: "irc.freenode.org#datamapper"
   email:
