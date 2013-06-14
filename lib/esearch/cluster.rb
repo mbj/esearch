@@ -60,7 +60,7 @@ module Esearch
 
     PATH = Pathname.new('/')
 
-    # Return handler for all indices 
+    # Return handler for all indices
     #
     # @return [Indices::All]
     #
