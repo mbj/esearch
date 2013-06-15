@@ -1,4 +1,7 @@
 ---
+machine:
+  services:
+    - elasticsearch
 test:
   override: 
     - bundle exec rake ci
