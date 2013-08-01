@@ -5,6 +5,7 @@ require 'equalizer'
 require 'concord'
 require 'abstract_type'
 require 'null_logger'
+require 'pathname'
 
 # Library namespace
 module Esearch
