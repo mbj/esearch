@@ -30,21 +30,49 @@ describe Esearch do
 
     result_a = index_a.type('type-a').index({'foo' => 'bar'})
     result_b = index_b.type('type-b').index({'foo' => 'baz'})
+    result_c = index_a.type('type-a').document('test-3').index_create({'foo' => 'test-3'})
 
     cluster.health(:wait_for_status => :green, :timeout => '10s')
 
     indices.refresh
 
     result = index_a.search({:query => { :match_all => {}}})
-    result.hits.map(&:source).should eql([{'foo' => 'bar'}])
+    result.hits.map(&:source).should eql([{'foo' => 'bar'}, {'foo' => 'test-3'}])
 
     result = indices.search({:query => { :match_all => {}}})
 
-    result.hits.map(&:source).to_set.should eql([{'foo' => 'bar'}, {'foo' => 'baz'}].to_set)
+    result.hits.map(&:source).to_set.should eql([{'foo' => 'bar'}, {'foo' => 'baz'}, {'foo' => 'test-3'}].to_set)
+
+    expect {
+      index_a.type('type-a').document(result_a.id).index_create({'foo' => 'bar'})
+    }.to raise_error(Esearch::ProtocolError)
 
     index_a.type('type-a').document(result_a.id).delete
 
     document = index_b.type('type-b').document(result_b.id).get
     document.source.should eql('foo' => 'baz')
+
+    index_b.type('type-b').document(result_b.id).index_update({'test4' => 'ok'})
+    document = index_b.type('type-b').document(result_b.id).get
+    document.source.should eql('test4' => 'ok')
+
+    index_b.type('type-b').document(result_b.id).index({'test5' => 'ok'})
+    document = index_b.type('type-b').document(result_b.id).get
+    document.source.should eql('test5' => 'ok')
+
+    expected = 1
+    count = 4
+
+    3.times do
+      index_a.type('type-a').document('test-4').update({
+        "script" => "ctx._source.counter += count",
+        "params" => { "count" => count },
+        "upsert" => { "counter" => 1 }
+      })
+      document = index_a.type('type-a').document('test-4').get
+      document.source.should eql({'counter' => expected})
+      expected += count
+    end
+
   end
 end

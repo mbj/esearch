@@ -63,6 +63,20 @@ module Esearch
         Command::Document::Index::Update.run(self, document, options)
       end
 
+
+      # Update document
+      # See: http://www.elasticsearch.org/guide/reference/api/update/
+      #
+      # @param [Document] document
+      # @param [Hash] options
+      #
+      # @return [Presenter::Document::Operation::Index]
+      #
+      # @api private
+      #
+      def update(document, options = {})
+        Command::Document::Update.run(self, document, options)
+      end
     end
 
     # Mixin that adds index commands
