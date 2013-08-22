@@ -23,6 +23,29 @@ module Esearch
 
       end
 
+      class Aliases < self
+
+        class Update < self
+          include Concord.new(:context, :settings)
+
+          EXPECT_STATUS = [ 200 ].freeze
+          PRESENTER = Presenter::Cluster::Aliases::Update
+
+        private
+
+          # Return request
+          #
+          # @return [Request]
+          #
+          # @api private
+          #
+          def request
+            Request.post('/_aliases', settings)
+          end
+        end
+
+      end
+
     end
   end
 end

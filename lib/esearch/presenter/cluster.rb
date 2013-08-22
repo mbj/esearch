@@ -79,6 +79,12 @@ module Esearch
         expose_primitive('unassigned_shards')
 
       end
+
+      class Aliases < self
+        class Update < self
+          expose_primitive :ok, :ok?
+        end
+      end
     end
   end
 end

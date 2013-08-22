@@ -74,5 +74,9 @@ describe Esearch do
       expected += count
     end
 
+    cluster.update_aliases({
+      "actions" => [{ "add" => { "index" => 'test-a', 'alias' => 'alias-a' } }]
+    })
+
   end
 end
