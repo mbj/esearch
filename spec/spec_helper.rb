@@ -7,8 +7,8 @@ module CommandHelper
   module ClassMethods
 
     def expect_to_run_command(command)
-      let(:connection) { mock('Connection') }
-      let(:result)     { mock('Result')     }
+      let(:connection) { double('Connection') }
+      let(:result)     { double('Result')     }
 
       before do
         command.should_receive(:run).with(object, *expected_arguments).and_return(result)
@@ -18,11 +18,11 @@ module CommandHelper
     end
 
     def setup_connection
-      let(:context)    { mock('Context', :connection => connection, :path => Pathname.new('/foo')) }
-      let(:connection) { mock('Connection')                                                        }
+      let(:context)    { double('Context', :connection => connection, :path => Pathname.new('/foo')) }
+      let(:connection) { double('Connection')                                                        }
 
       let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
-      let(:response)   { mock('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
+      let(:response)   { double('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
 
       let(:status)     { 200 }
 
@@ -33,7 +33,7 @@ module CommandHelper
 
     def expect_exception(exception)
       setup_connection
-      
+
       yield if block_given?
 
       it 'should raise error' do
@@ -49,7 +49,7 @@ module CommandHelper
       it { should eql(result) }
     end
 
-    def expect_presenter(presenter, &block) 
+    def expect_presenter(presenter, &block)
       expect_result(presenter.new({}), &block)
     end
   end

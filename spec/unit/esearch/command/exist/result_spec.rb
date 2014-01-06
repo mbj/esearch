@@ -13,11 +13,11 @@ describe Esearch::Command::Exist, '.run' do
     connection.should_receive(:run).with(expected_request).and_return(response)
   end
 
-  let(:context)    { mock('Context', :connection => connection, :path => Pathname.new('/foo')) }
-  let(:connection) { mock('Connection')                                                        }
+  let(:context)    { double('Context', :connection => connection, :path => Pathname.new('/foo')) }
+  let(:connection) { double('Connection')                                                        }
 
   let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
-  let(:response)   { mock('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
+  let(:response)   { double('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
 
   context 'with status 200' do
     let(:status)     { 200 }

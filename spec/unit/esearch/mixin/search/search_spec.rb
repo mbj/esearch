@@ -11,7 +11,7 @@ describe Esearch::Mixin::Search, '#search' do
     end
   end
 
-  let(:query) { mock('Query') }
+  let(:query) { double('Query') }
   let(:expected_arguments) { [query] }
 
   expect_to_run_command(Esearch::Command::Search)

@@ -5,10 +5,10 @@ describe Esearch::Request, '.new' do
 
   subject { object.new(*arguments) }
 
-  let(:verb)   { mock('Verb')   }
-  let(:path)   { '/some/path'   }
-  let(:params) { mock('Params') }
-  let(:body)   { mock('Body')   }
+  let(:verb)   { double('Verb')   }
+  let(:path)   { '/some/path'     }
+  let(:params) { double('Params') }
+  let(:body)   { double('Body')   }
 
   context 'with two args' do
     let(:arguments) { [ verb, path ] }

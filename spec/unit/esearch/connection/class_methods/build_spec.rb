@@ -5,9 +5,9 @@ describe Esearch::Connection, '.build' do
 
   subject { object.build(*arguments) }
 
-  let(:url)        { mock('URL')        }
-  let(:logger)     { mock('Logger')     }
-  let(:connection) { mock('Connection') }
+  let(:url)        { double('URL')        }
+  let(:logger)     { double('Logger')     }
+  let(:connection) { double('Connection') }
 
   before do
     Faraday.should_receive(:new).with(url).and_return(connection)

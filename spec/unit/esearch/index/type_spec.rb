@@ -4,7 +4,7 @@ describe Esearch::Index, '#type' do
   subject { object.type(name) }
 
   let(:object)     { described_class.new(connection, index_name) }
-  let(:connection) { mock('Connection')                          }
+  let(:connection) { double('Connection')                        }
   let(:index_name) { 'foo'                                       }
   let(:name)       { 'bar'                                       }
 

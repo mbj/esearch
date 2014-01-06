@@ -5,7 +5,7 @@ describe Esearch::Cluster, '#path' do
 
   let(:object) { described_class.new(connection) }
 
-  let(:connection) { mock('Connection') }
+  let(:connection) { double('Connection') }
 
   it { should eql(Pathname.new('/')) }
 end

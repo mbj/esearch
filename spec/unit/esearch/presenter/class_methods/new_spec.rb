@@ -5,10 +5,10 @@ describe Esearch::Presenter, '.new' do
 
   subject { object.new(raw) }
 
-  let(:value) { mock('Value') }
+  let(:value) { double('Value') }
 
   class DummyPresenter
-    include Concord.new(:raw) 
+    include Concord.new(:raw)
   end
 
   context 'with exposed tagged collection' do

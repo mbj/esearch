@@ -10,9 +10,9 @@ describe Esearch::Request, '#run' do
   let(:body)   { { 'foo' => 'bar' } }
   let(:params) { { 'baz' => 'buz' } }
 
-  let(:response_status)  { mock('Status') }
-  let(:response_headers) { {}             }
-  let(:response_body)    { mock('Body')   }
+  let(:response_status)  { double('Status') }
+  let(:response_headers) { {}               }
+  let(:response_body)    { double('Body')   }
 
   let(:connection) do
     Faraday.new do |builder|
@@ -22,7 +22,7 @@ describe Esearch::Request, '#run' do
 
   let(:stubs) do
     Faraday::Adapter::Test::Stubs.new do |stub|
-      stub.get('/some/random/path') do |env| 
+      stub.get('/some/random/path') do |env|
         env.fetch(:request_headers).fetch('Content-Type').should eql('application/json; charset=UTF-8')
         env.fetch(:method).should be(:get)
         env.fetch(:params).should eql(params)

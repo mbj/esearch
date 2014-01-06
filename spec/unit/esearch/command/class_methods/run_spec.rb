@@ -5,9 +5,9 @@ describe Esearch::Command, '.run' do
 
   let(:object) { described_class }
 
-  let(:instance)  { mock('Instance', :result => result) }
-  let(:result)    { mock('Result')                      }
-  let(:arguments) { [:foo, :bar]                        }
+  let(:instance)  { double('Instance', :result => result) }
+  let(:result)    { double('Result')                      }
+  let(:arguments) { [:foo, :bar]                          }
 
   it 'should instantiate object and return result' do
     described_class.should_receive(:new).with(*arguments).and_return(instance)

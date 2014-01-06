@@ -4,7 +4,7 @@ describe Esearch::Cluster, '#index' do
   subject { object.index(name) }
 
   let(:object)     { described_class.new(connection) }
-  let(:connection) { mock('Connection')              }
+  let(:connection) { double('Connection')            }
   let(:name)       { 'foo'                           }
 
   it { should eql(Esearch::Index.new(connection, name)) }

@@ -16,7 +16,7 @@ module Esearch
     end
 
 
-    # Run request 
+    # Run request
     #
     # @param [Command::Request] request
     #

@@ -12,7 +12,7 @@ describe Esearch::Mixin::Document, '#index_create' do
 
   context 'with one arg' do
     subject { object.index_create(document) }
-    let(:document) { mock('Document') }
+    let(:document) { double('Document') }
 
     let(:expected_arguments) { [document, {}] }
 
@@ -21,8 +21,8 @@ describe Esearch::Mixin::Document, '#index_create' do
 
   context 'with two args' do
     subject { object.index_create(document, options) }
-    let(:document) { mock('Document') }
-    let(:options)  { mock('Options') }
+    let(:document) { double('Document') }
+    let(:options)  { double('Options')  }
 
     let(:expected_arguments) { [document, options] }
 
