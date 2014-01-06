@@ -1,3 +1,7 @@
+# v0.2.1 2014-01-06
+
+* Bump adamantium and multi_json deps.
+
 # v0.2.0 2013-05-19
 
 * Rename lib to esearch
