@@ -2,7 +2,7 @@ module Esearch
 
   # Request used to interface elasticsearch
   class Request
-    include Adamantium, Equalizer.new(:verb, :path, :body, :params)
+    include Adamantium::Flat, Equalizer.new(:verb, :path, :body, :params)
 
     EMPTY_HASH = {}.freeze
 
