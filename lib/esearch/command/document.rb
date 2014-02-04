@@ -4,6 +4,26 @@ module Esearch
     # Base class for commands on documents
     class Document < self
 
+      # Document update command
+      class Update < self
+        include Concord.new(:context, :document, :options)
+
+        EXPECTED_STATI = [ 200, 201 ].freeze
+        PRESENTER = Presenter::Document::Operation::Update
+
+      private
+
+        # Return request
+        #
+        # @return [Request]
+        #
+        # @api private
+        #
+        def request
+          Request.post(context_path.join('_update'), document, options)
+        end
+      end
+
       # Document index command
       class Index < self
         include Concord.new(:context, :document, :options)
@@ -50,7 +70,7 @@ module Esearch
 
       # Present get document command result
       class Get < self
-        
+
         EXPECTED_STATI = [ 200, 404 ].freeze
         PRESENTER = Presenter::Document::Get
 

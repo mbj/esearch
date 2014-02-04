@@ -48,6 +48,16 @@ module Esearch
       Command::Cluster::Health.run(self, options)
     end
 
+    # Update aliases
+    #
+    # @return [Status]
+    #
+    # @api private
+    #
+    def update_aliases(settings)
+      Command::Cluster::Aliases::Update.run(self, settings)
+    end
+
     # Return path
     #
     # @return [Pathname]
