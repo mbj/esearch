@@ -15,13 +15,13 @@ module Esearch
       #
       # @api private
       #
-      def each(&block)
+      def each
         return to_enum unless block_given?
 
         hits.each do |hit|
           yield Hit.new(hit)
         end
-        
+
         self
       end
 
@@ -34,7 +34,7 @@ module Esearch
       def size
         hits.size
       end
-      
+
       # Return total amount of hits in the query
       #
       # @return [Fixnum]
