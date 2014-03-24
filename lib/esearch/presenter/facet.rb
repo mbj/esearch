@@ -41,10 +41,7 @@ module Esearch
       # @api private
       #
       def aspects
-        util = self.class
-        raw.fetch(util::FACET_KEY).map do |item|
-          util::ASPECT_CLASS.new(item)
-        end
+        raw.fetch(util::FACET_KEY).map(&self.class::ASPECT_CLASS.method(:new))
       end
       memoize :aspects
 
