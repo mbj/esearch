@@ -18,7 +18,6 @@ describe Esearch::Command, '#result' do
     end
   end
 
-
   let(:context)    { double('Context', connection: connection, path: Pathname.new('/foo')) }
   let(:connection) { double('Connection')                                                        }
 

@@ -59,7 +59,6 @@ module CommandHelper
   end
 end
 
-
 RSpec.configure do |config|
   config.include(CommandHelper)
 end

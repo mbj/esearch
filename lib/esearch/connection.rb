@@ -15,7 +15,6 @@ module Esearch
       new(Faraday.new(uri), logger)
     end
 
-
     # Run request
     #
     # @param [Command::Request] request
