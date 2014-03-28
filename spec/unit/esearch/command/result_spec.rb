@@ -21,7 +21,7 @@ describe Esearch::Command, '#result' do
   let(:context)    { double('Context', connection: connection, path: Pathname.new('/foo')) }
   let(:connection) { double('Connection')                                                        }
 
-  let(:headers)    { {'content-type' => content_type } }
+  let(:headers)    { { 'content-type' => content_type } }
   let(:content_type) { 'application/json; charset=UTF-8' }
   let(:response)   { double('Response', :frozen? => true, status: status, headers: headers, body: body) }
   let(:body)       { '{}' }
@@ -42,7 +42,10 @@ describe Esearch::Command, '#result' do
     let(:content_type) { 'text/plain' }
 
     it 'should raise error' do
-      expect { subject }.to raise_error(Esearch::ProtocolError, 'Expected json content type, but got: "text/plain"')
+      expect { subject }.to raise_error(
+        Esearch::ProtocolError,
+        'Expected json content type, but got: "text/plain"'
+      )
     end
   end
 
@@ -51,7 +54,10 @@ describe Esearch::Command, '#result' do
 
     context 'with json body' do
       it 'should raise error' do
-        expect { subject }.to raise_error(Esearch::ProtocolError, 'expected response stati: [200] but got: 201, remote message: {}')
+        expect { subject }.to raise_error(
+          Esearch::ProtocolError,
+          'expected response stati: [200] but got: 201, remote message: {}'
+        )
       end
     end
 
@@ -60,7 +66,10 @@ describe Esearch::Command, '#result' do
       let(:body)         { 'message'   }
 
       it 'should raise error' do
-        expect { subject }.to raise_error(Esearch::ProtocolError, 'expected response stati: [200] but got: 201, remote message: "message"')
+        expect { subject }.to raise_error(
+          Esearch::ProtocolError,
+          'expected response stati: [200] but got: 201, remote message: "message"'
+        )
       end
     end
   end

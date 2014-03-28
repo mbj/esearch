@@ -3,7 +3,7 @@ module Esearch
     # Command to check existance of objects
     class Exist < self
 
-      EXPECTED_STATI = [ 200, 404 ].freeze
+      EXPECTED_STATI = [200, 404].freeze
 
       # Return result
       #

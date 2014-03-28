@@ -29,7 +29,7 @@ module Esearch
       #
       def self.get(type)
         REGISTRY.fetch(type) do
-          raise "Facet with type #{type.inspect} is not known"
+          fail "Facet with type #{type.inspect} is not known"
         end
       end
       private_class_method :get

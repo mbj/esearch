@@ -12,4 +12,3 @@ describe Esearch::Type, '#connection' do
 
   it_should_behave_like 'an idempotent method'
 end
-

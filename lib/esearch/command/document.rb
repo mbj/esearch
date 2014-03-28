@@ -8,7 +8,7 @@ module Esearch
       class Index < self
         include Concord.new(:context, :document, :options)
 
-        EXPECTED_STATI = [ 200, 201 ].freeze
+        EXPECTED_STATI = [200, 201].freeze
         PRESENTER = Presenter::Document::Operation::Index
 
         FORCE_OPTIONS = {}
@@ -37,13 +37,13 @@ module Esearch
 
         # Document index update command
         class Update < self
-          EXPECTED_STATI = [ 200 ].freeze
+          EXPECTED_STATI = [200].freeze
           FORCE_OPTIONS = { op_type: :index }.freeze
         end
 
         # Document index create command
         class Create < self
-          EXPECTED_STATI = [ 201 ].freeze
+          EXPECTED_STATI = [201].freeze
           FORCE_OPTIONS = { op_type: :create }.freeze
         end
       end
@@ -51,7 +51,7 @@ module Esearch
       # Present get document command result
       class Get < self
 
-        EXPECTED_STATI = [ 200, 404 ].freeze
+        EXPECTED_STATI = [200, 404].freeze
         PRESENTER = Presenter::Document::Get
 
         # Return result

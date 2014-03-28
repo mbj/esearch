@@ -67,4 +67,3 @@ module Esearch
     end
   end
 end
-

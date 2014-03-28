@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Esearch::Document, '#delete' do
-  subject { object.delete}
+  subject { object.delete }
 
   let(:object)             { described_class.new(type, id) }
   let(:type)               { double('Type')                }

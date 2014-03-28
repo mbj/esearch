@@ -3,11 +3,11 @@ require 'spec_helper'
 describe Esearch::Presenter::Hits, '#each' do
   subject { object.each { |hit| yields << hit } }
 
-  let(:object) { described_class.new(raw) }
-  let(:yields) { []                       }
-  let(:hit_a)  { double('Hit A')          }
-  let(:hit_b)  { double('Hit B')          }
-  let(:raw)    { { 'hits' => [ hit_a, hit_b ] } }
+  let(:object) { described_class.new(raw)     }
+  let(:yields) { []                           }
+  let(:hit_a)  { double('Hit A')              }
+  let(:hit_b)  { double('Hit B')              }
+  let(:raw)    { { 'hits' => [hit_a, hit_b] } }
 
   it_should_behave_like 'an #each method'
 

@@ -7,7 +7,7 @@ module Esearch
       class Create < self
         include Concord.new(:context, :settings)
 
-        EXPECT_STATUS = [ 201 ].freeze
+        EXPECT_STATUS = [201].freeze
         PRESENTER = Presenter::Index::Create
 
       private

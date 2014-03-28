@@ -16,7 +16,7 @@ describe Esearch::Command::Exist, '.run' do
   let(:context)    { double('Context', connection: connection, path: Pathname.new('/foo')) }
   let(:connection) { double('Connection')                                                        }
 
-  let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
+  let(:headers)    { { 'content-type' => 'application/json; charset=UTF-8' } }
   let(:response)   { double('Response', :frozen? => true, status: status, headers: headers, body: '{}') }
 
   context 'with status 200' do

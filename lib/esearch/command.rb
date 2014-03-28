@@ -3,7 +3,7 @@ module Esearch
   class Command
     include Adamantium::Flat, AbstractType, Concord.new(:context)
 
-    EXPECTED_STATI    = [ 200 ].freeze
+    EXPECTED_STATI    = [200].freeze
     JSON_CONTENT_TYPE = 'application/json; charset=UTF-8'.freeze
 
     # Run command
@@ -112,7 +112,13 @@ module Esearch
     # @api private
     #
     def raise_status_error
-      raise ProtocolError, "expected response stati: #{expected_response_stati.inspect} but got: #{response.status}, remote message: #{remote_message.inspect}"
+      message = format(
+        'expected response stati: %s but got: %s, remote message: %s',
+        expected_response_stati.inspect,
+        response.status,
+        remote_message.inspect
+      )
+      fail ProtocolError, message
     end
 
     # Return remote message
@@ -137,7 +143,7 @@ module Esearch
     #
     def parsed_json
       unless json_content_type?
-        raise ProtocolError, "Expected json content type, but got: #{content_type.inspect}"
+        fail ProtocolError, "Expected json content type, but got: #{content_type.inspect}"
       end
       MultiJson.load(response.body)
     end

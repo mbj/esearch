@@ -8,7 +8,7 @@ describe Esearch::Command::Document::Index::Create, '.run' do
   let(:options)  { { foo: :bar }      }
 
   let(:expected_request) do
-    Esearch::Request.new(:post, '/foo', document, { foo: :bar, op_type: :create })
+    Esearch::Request.new(:post, '/foo', document, foo: :bar, op_type: :create)
   end
 
   expect_presenter(Esearch::Presenter::Document::Operation::Index) do

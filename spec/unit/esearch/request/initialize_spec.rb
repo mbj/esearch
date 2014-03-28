@@ -11,7 +11,7 @@ describe Esearch::Request, '.new' do
   let(:body)   { double('Body')   }
 
   context 'with two args' do
-    let(:arguments) { [ verb, path ] }
+    let(:arguments) { [verb, path] }
 
     its(:verb)   { should be(verb) }
     its(:path)   { should be(path) }
@@ -20,7 +20,7 @@ describe Esearch::Request, '.new' do
   end
 
   context 'with three args' do
-    let(:arguments) { [ verb, path, body ] }
+    let(:arguments) { [verb, path, body] }
 
     its(:verb)   { should be(verb) }
     its(:path)   { should be(path) }
@@ -29,7 +29,7 @@ describe Esearch::Request, '.new' do
   end
 
   context 'with four args' do
-    let(:arguments) { [ verb, path, body, params ] }
+    let(:arguments) { [verb, path, body, params] }
 
     its(:verb)   { should be(verb)   }
     its(:path)   { should be(path)   }

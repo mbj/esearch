@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Esearch::Document, '#get' do
-  subject { object.get}
+  subject { object.get }
 
   let(:object)             { described_class.new(type, id) }
   let(:type)               { double('Type')                }

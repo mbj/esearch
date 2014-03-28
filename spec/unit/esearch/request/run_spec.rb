@@ -28,7 +28,7 @@ describe Esearch::Request, '#run' do
         env.fetch(:params).should eql(params)
         env.fetch(:url).should eql(URI.parse('http:/some/random/path?baz=buz'))
         env.fetch(:body).should eql('{"foo":"bar"}')
-        [ response_status, response_headers, response_body ]
+        [response_status, response_headers, response_body]
       end
     end
   end
