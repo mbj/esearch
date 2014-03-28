@@ -59,7 +59,6 @@ module Esearch
       PATH
     end
 
-
     # Return handler for all indices
     #
     # @return [Indices::All]
