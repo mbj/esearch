@@ -27,4 +27,16 @@ describe Esearch::Document do
 
     expect_to_run_command(Esearch::Command::Document::Get)
   end
+
+  describe '#path' do
+    subject { object.path }
+
+    let(:type) { double('Type', connection: connection, path: Pathname.new('a-index/b-type')) }
+
+    let(:id)   { 'c-id' }
+
+    it { should eql(Pathname.new('a-index/b-type/c-id')) }
+
+    it_should_behave_like 'an idempotent method'
+  end
 end
