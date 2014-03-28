@@ -23,7 +23,7 @@ UncommunicativeMethodName:
   - !ruby/regexp /[0-9]$/
   - !ruby/regexp /[A-Z]/
 LongParameterList:
-  max_params: 2 
+  max_params: 2
   exclude:
   - Esearch::Request#initialize # 4 parameters, acceptable it is a DTO
   enabled: true
@@ -55,10 +55,11 @@ NestedIterators:
   max_allowed_nesting: 1
 TooManyStatements:
   max_statements: 5
-  exclude: []
+  exclude:
+  - Esearch::Connection#run
   enabled: true
 DuplicateMethodCall:
-  allow_calls: 
+  allow_calls:
   - util.debug
   exclude: []
   enabled: true
@@ -88,7 +89,7 @@ DataClump:
   max_copies: 1
   min_clump_size: 3
 ControlParameter:
-  exclude: 
+  exclude:
   - Esearch::Index#read
   enabled: true
 LongYieldList:
