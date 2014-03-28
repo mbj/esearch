@@ -8,6 +8,6 @@ describe Esearch::Command::Index::Delete, '.run' do
   let(:expected_request) do
     Esearch::Request.new(:delete, '/foo', {}, {})
   end
- 
+
   expect_presenter(Esearch::Presenter::Index::Delete)
 end

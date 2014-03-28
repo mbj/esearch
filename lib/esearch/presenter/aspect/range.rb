@@ -4,8 +4,8 @@ module Esearch
 
       # Range aspect
       class Range < self
-        
-        # Return range start 
+
+        # Return range start
         #
         # @return [Float]
         #   if present
@@ -19,7 +19,7 @@ module Esearch
           raw['from']
         end
 
-        # Return range end 
+        # Return range end
         #
         # @return [Float]
         #   if present
@@ -41,7 +41,7 @@ module Esearch
         #
         expose_primitive(:total_count)
 
-        # Return total 
+        # Return total
         #
         # @return [Float]
         #
@@ -49,7 +49,7 @@ module Esearch
         #
         expose_primitive(:total)
 
-        # Return mean 
+        # Return mean
         #
         # @return [Float]
         #

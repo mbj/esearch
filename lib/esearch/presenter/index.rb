@@ -13,7 +13,7 @@ module Esearch
       class Delete < self
         expose_primitive :ok, :ok?
       end
-      
+
       # Refresh operation presenter
       class Refresh < self
       end

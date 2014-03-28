@@ -3,10 +3,10 @@ module Esearch
 
     # Presenter for an hit
     class Hit < self
-  
+
       # Return source field if present
       #
-      # @return [Hash] 
+      # @return [Hash]
       #   if present
       #
       # @return [nil]
@@ -17,10 +17,10 @@ module Esearch
       def source
         raw['_source']
       end
-  
+
       # Return fields if present
       #
-      # @return [Hash] 
+      # @return [Hash]
       #   if present
       #
       # @return [nil]

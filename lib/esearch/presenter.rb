@@ -15,7 +15,7 @@ module Esearch
     def self.expose_tagged_collection(key, presenter)
       key = key.to_s # caches string in closure ;)
       define_method(key) do ||
-        raw.fetch(key).map do |name, element| 
+        raw.fetch(key).map do |name, element|
           presenter.new(element.merge('name' => name))
         end
       end

@@ -82,7 +82,7 @@ module Esearch
         # Return source document
         #
         # @return [Hash]
-        # 
+        #
         # @api private
         #
         expose_primitive(:_source, :source)
@@ -90,7 +90,7 @@ module Esearch
         # Return requested fields
         #
         # @return [Hash]
-        # 
+        #
         # @api private
         #
         expose_primitive(:fields)

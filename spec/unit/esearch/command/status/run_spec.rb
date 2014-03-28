@@ -8,6 +8,6 @@ describe Esearch::Command::Status, '.run' do
   let(:expected_request) do
     Esearch::Request.new(:get, '/foo/_status', {}, {})
   end
- 
+
   expect_presenter(Esearch::Presenter::Status)
 end
