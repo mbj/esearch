@@ -27,6 +27,8 @@ module Esearch
     class All < self
       include Concord.new(:connection)
 
+      PATH = Pathname.new('/_all').freeze
+
       # Return connection
       #
       # @return [Connection]
@@ -42,10 +44,8 @@ module Esearch
       # @api private
       #
       def path
-        self.class::PATH
+        PATH
       end
-
-      PATH = Pathname.new('/_all').freeze
 
     end
   end
