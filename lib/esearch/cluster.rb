@@ -1,6 +1,7 @@
 module Esearch
   # Handle for an elasticsearch cluster
   class Cluster
+    PATH = Pathname.new('/').freeze
 
     include Adamantium::Flat, Concord.new(:connection)
 
@@ -55,10 +56,9 @@ module Esearch
     # @api private
     #
     def path
-      self.class::PATH
+      PATH
     end
 
-    PATH = Pathname.new('/')
 
     # Return handler for all indices
     #
