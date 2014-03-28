@@ -38,19 +38,19 @@ module Esearch
         # Document index update command
         class Update < self
           EXPECTED_STATI = [ 200 ].freeze
-          FORCE_OPTIONS = { :op_type => :index }.freeze
+          FORCE_OPTIONS = { op_type: :index }.freeze
         end
 
         # Document index create command
         class Create < self
           EXPECTED_STATI = [ 201 ].freeze
-          FORCE_OPTIONS = { :op_type => :create }.freeze
+          FORCE_OPTIONS = { op_type: :create }.freeze
         end
       end
 
       # Present get document command result
       class Get < self
-        
+
         EXPECTED_STATI = [ 200, 404 ].freeze
         PRESENTER = Presenter::Document::Get
 

@@ -19,12 +19,12 @@ describe Esearch::Command, '#result' do
   end
 
 
-  let(:context)    { double('Context', :connection => connection, :path => Pathname.new('/foo')) }
+  let(:context)    { double('Context', connection: connection, path: Pathname.new('/foo')) }
   let(:connection) { double('Connection')                                                        }
 
   let(:headers)    { {'content-type' => content_type } }
   let(:content_type) { 'application/json; charset=UTF-8' }
-  let(:response)   { double('Response', :frozen? => true, :status => status, :headers => headers, :body => body) }
+  let(:response)   { double('Response', :frozen? => true, status: status, headers: headers, body: body) }
   let(:body)       { '{}' }
 
   let(:status)     { 200 }

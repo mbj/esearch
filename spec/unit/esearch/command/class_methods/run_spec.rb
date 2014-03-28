@@ -5,7 +5,7 @@ describe Esearch::Command, '.run' do
 
   let(:object) { described_class }
 
-  let(:instance)  { double('Instance', :result => result) }
+  let(:instance)  { double('Instance', result: result) }
   let(:result)    { double('Result')                      }
   let(:arguments) { [:foo, :bar]                          }
 

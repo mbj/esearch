@@ -18,11 +18,11 @@ module CommandHelper
     end
 
     def setup_connection
-      let(:context)    { double('Context', :connection => connection, :path => Pathname.new('/foo')) }
+      let(:context)    { double('Context', connection: connection, path: Pathname.new('/foo')) }
       let(:connection) { double('Connection')                                                        }
 
       let(:headers)    { {'content-type' => 'application/json; charset=UTF-8'} }
-      let(:response)   { double('Response', :frozen? => true, :status => status, :headers => headers, :body => '{}') }
+      let(:response)   { double('Response', :frozen? => true, status: status, headers: headers, body: '{}') }
 
       let(:status)     { 200 }
 

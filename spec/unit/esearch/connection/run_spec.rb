@@ -5,10 +5,10 @@ describe Esearch::Connection, '#run' do
 
   let(:object) { described_class.new(connection, logger) }
 
-  let(:connection) { double('Connection')                                  }
-  let(:logger)     { DummyLogger.new                                       }
-  let(:request)    { double('Request', :log_string => 'the-logged-string') }
-  let(:response)   { double('Response', :status => 200)                    }
+  let(:connection) { double('Connection')                               }
+  let(:logger)     { DummyLogger.new                                    }
+  let(:request)    { double('Request', log_string: 'the-logged-string') }
+  let(:response)   { double('Response', status: 200)                    }
 
   class DummyLogger
     attr_reader :messages

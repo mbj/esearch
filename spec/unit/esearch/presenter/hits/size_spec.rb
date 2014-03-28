@@ -5,7 +5,7 @@ describe Esearch::Presenter::Hits, '#size' do
 
   let(:object) { described_class.new(raw)           }
   let(:size)   { double('Size')                     }
-  let(:raw)    { { 'hits' => double(:size => size)} }
+  let(:raw)    { { 'hits' => double(size: size)} }
 
   it { should be(size) }
 

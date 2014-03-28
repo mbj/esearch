@@ -1,6 +1,6 @@
 module Esearch
   # Abstract base class for elasticsearch commands
-  class Command 
+  class Command
     include Adamantium::Flat, AbstractType, Concord.new(:context)
 
     EXPECTED_STATI    = [ 200 ].freeze
@@ -86,7 +86,7 @@ module Esearch
     # Return expected response stati
     #
     # @return [Enumerable<Fixnum>]
-    # 
+    #
     # @api private
     #
     def expected_response_stati
