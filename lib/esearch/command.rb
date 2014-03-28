@@ -114,7 +114,7 @@ module Esearch
     def raise_status_error
       message = format(
         'expected response stati: %s but got: %s, remote message: %s',
-        expected_response_stati.inspect,
+        expected_response_stati,
         response.status,
         remote_message.inspect
       )
