@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe Esearch::Request do
 
+  let(:object) { described_class.new(verb, path, body, params) }
+
   describe '.new' do
     let(:object) { described_class }
 
@@ -42,8 +44,6 @@ describe Esearch::Request do
 
   describe '#run' do
 
-    let(:object) { described_class.new(verb, path, body, params) }
-
     subject { object.run(connection) }
 
     let(:verb)   { :get }
@@ -77,6 +77,18 @@ describe Esearch::Request do
     its(:status)  { should  be(response_status)                               }
     its(:headers) { should eql(Faraday::Utils::Headers.new(response_headers)) }
     its(:body)    { should  be(response_body)                                 }
+  end
+
+  describe '#log_string' do
+
+    subject { object.log_string }
+
+    let(:verb)   { :get }
+    let(:path)   { '/some/random/path' }
+    let(:body)   { { 'foo' => 'bar' } }
+    let(:params) { { 'baz' => 'buz' } }
+
+    it { should eql('GET /some/random/path : {"baz"=>"buz"} : {"foo"=>"bar"}') }
   end
 
 end
