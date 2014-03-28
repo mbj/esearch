@@ -68,8 +68,6 @@ module Esearch
           assert_success
           if response.status == 200
             presenter.new(parsed_json)
-          else
-            nil
           end
         end
 
