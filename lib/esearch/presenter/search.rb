@@ -10,8 +10,8 @@ module Esearch
       # @api private
       #
       def facets
-        raw.fetch('facets', {}).each_with_object({}) do |(name, body), hash|
-          hash[name] = Facet.build(body)
+        raw.fetch('facets', {}).each_with_object({}) do |(name, body), aggregate|
+          aggregate[name] = Facet.build(body)
         end
       end
       memoize :facets
