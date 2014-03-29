@@ -41,7 +41,8 @@ module Esearch
       # @api private
       #
       def aspects
-        raw.fetch(util::FACET_KEY).map(&self.class::ASPECT_CLASS.method(:new))
+        util = self.class
+        raw.fetch(util::FACET_KEY).map(&util::ASPECT_CLASS.method(:new))
       end
       memoize :aspects
 
@@ -51,7 +52,7 @@ module Esearch
       class Range < self
         ASPECT_CLASS = Aspect::Range
         FACET_KEY = 'ranges'.freeze
-      end # RAnge
+      end # Range
 
       # Facet that returns term counts
       class Terms < self
