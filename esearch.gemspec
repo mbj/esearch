@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name        = 'esearch'
-  gem.version     = '0.2.1'
+  gem.version     = '0.2.2'
   gem.authors     = [ 'Markus Schirp' ]
   gem.email       = [ 'mbj@schirp-dso.com' ]
   gem.description = 'Esearch driver for ruby'

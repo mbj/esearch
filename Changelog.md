@@ -1,3 +1,8 @@
+# v0.2.2 2014-03-29
+
+* Bump dependencies
+* Full mutation coverage
+
 # v0.2.1 2014-01-06
 
 * Bump adamantium and multi_json deps.
