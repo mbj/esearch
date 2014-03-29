@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   class Presenter
     # Presenter for search result

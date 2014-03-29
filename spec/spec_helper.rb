@@ -1,3 +1,5 @@
+# # encoding: UTF-8
+
 # encoding: utf-8
 require 'esearch'
 require 'devtools'

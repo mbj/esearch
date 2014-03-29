@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Handler for document
   class Document

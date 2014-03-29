@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Interface to a specific elasticsearch type
   class Type

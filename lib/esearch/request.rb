@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
 
   # Request used to interface elasticsearch

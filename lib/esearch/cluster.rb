@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Handle for an elasticsearch cluster
   class Cluster

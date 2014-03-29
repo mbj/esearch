@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   class Command
     # Base class for cluster commands

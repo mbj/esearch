@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Connection to an elasticsearch cluster
   class Connection

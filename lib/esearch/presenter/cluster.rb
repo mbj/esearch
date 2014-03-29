@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   class Presenter
     # Base class for cluster presenters

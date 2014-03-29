@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Driver for specific index
   class Index

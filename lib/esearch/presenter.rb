@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Abstract base class for json response presenters
   class Presenter

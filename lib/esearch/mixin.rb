@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module Esearch
   # Namespace for handler mixins
   module Mixin

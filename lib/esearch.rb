@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'multi_json'
 require 'faraday'
 require 'adamantium'

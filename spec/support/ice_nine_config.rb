@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 module IceNine
   class Freezer
     class RSpec < NoFreeze
