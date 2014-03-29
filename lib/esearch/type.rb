@@ -36,5 +36,6 @@ module Esearch
       es_index.path.join(name)
     end
     memoize :path
-  end
-end
+
+  end # Type
+end # Esearch

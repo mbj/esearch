@@ -13,7 +13,7 @@ module Esearch
   class RemoteError < StandardError; end
   # Error raised when protocol is violated
   class ProtocolError < StandardError; end
-end
+end # Esearch
 
 require 'esearch/request'
 require 'esearch/mixin'

@@ -52,11 +52,11 @@ module Esearch
 
         # Index operation
         class Index < self
-        end
+        end # Index
 
         # Update operation
         class Update < self
-        end
+        end # Update
 
         # Delete operation
         class Delete < self
@@ -73,8 +73,8 @@ module Esearch
           #
           expose_primitive(:found, :found?)
 
-        end
-      end
+        end # Delete
+      end # Operation
 
       # Presenter for document get result
       class Get < self
@@ -95,8 +95,8 @@ module Esearch
         #
         expose_primitive(:fields)
 
-      end
+      end # Get
 
-    end
-  end
-end
+    end # Document
+  end # Presenter
+end # Esearch

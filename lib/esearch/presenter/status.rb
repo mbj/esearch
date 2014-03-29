@@ -9,10 +9,10 @@ module Esearch
 
         expose_primitive('name')
 
-      end
+      end # Index
 
       expose_tagged_collection('indices', Status::Index)
 
-    end
-  end
-end
+    end # Status
+  end # Presenter
+end # Esearch

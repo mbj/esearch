@@ -102,8 +102,8 @@ module Esearch
           Request.delete(context_path)
         end
 
-      end
+      end # Delete
 
-    end
-  end
-end
+    end # Document
+  end # Command
+end # Esearch

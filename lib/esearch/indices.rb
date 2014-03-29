@@ -47,6 +47,6 @@ module Esearch
         PATH
       end
 
-    end
-  end
-end
+    end # All
+  end # Indices
+end # Esearch

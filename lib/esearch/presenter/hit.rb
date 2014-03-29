@@ -64,6 +64,6 @@ module Esearch
       #
       expose_primitive(:_score, :score)
 
-    end
-  end
-end
+    end # Hit
+  end # Presenter
+end # Esearch

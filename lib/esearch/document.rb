@@ -49,5 +49,5 @@ module Esearch
       type.connection
     end
 
-  end
-end
+  end # Document
+end # Esearch

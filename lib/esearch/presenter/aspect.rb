@@ -12,6 +12,6 @@ module Esearch
       #
       expose_primitive(:count)
 
-    end
-  end
-end
+    end # Aspect
+  end # Presenter
+end # Esearch

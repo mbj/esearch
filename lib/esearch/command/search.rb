@@ -18,6 +18,6 @@ module Esearch
         Request.get(context_path.join('_search'), query)
       end
 
-    end
-  end
-end
+    end # Search
+  end # Command
+end # Esearch

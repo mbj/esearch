@@ -51,19 +51,19 @@ module Esearch
       class Range < self
         ASPECT_CLASS = Aspect::Range
         FACET_KEY = 'ranges'.freeze
-      end
+      end # RAnge
 
       # Facet that returns term counts
       class Terms < self
         ASPECT_CLASS = Aspect::Term
         FACET_KEY = 'terms'.freeze
-      end
+      end # Terms
 
       REGISTRY = {
         'range' => Range,
         'terms' => Terms
       }.freeze
 
-    end
-  end
-end
+    end # Facet
+  end # Presenter
+end # Esearch

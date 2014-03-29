@@ -7,17 +7,17 @@ module Esearch
       # Create operation presenter
       class Create < self
         expose_primitive :ok, :ok?
-      end
+      end # Create
 
       # Delete operation presenter
       class Delete < self
         expose_primitive :ok, :ok?
-      end
+      end # Delete
 
       # Refresh operation presenter
       class Refresh < self
-      end
+      end # Referesh
 
-    end
-  end
-end
+    end # Index
+  end # Presenter
+end # Esearch

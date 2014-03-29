@@ -86,5 +86,5 @@ module Esearch
       end
     end
 
-  end
-end
+  end # Request
+end # Esearch

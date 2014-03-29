@@ -27,6 +27,6 @@ module Esearch
       end
       memoize :hits
 
-    end
-  end
-end
+    end # Search
+  end # Presenter
+end # Esearch

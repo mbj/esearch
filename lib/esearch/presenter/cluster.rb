@@ -78,7 +78,7 @@ module Esearch
         #
         expose_primitive('unassigned_shards')
 
-      end
-    end
-  end
-end
+      end # Health
+    end # Cluster
+  end # Presenter
+end # Esearch

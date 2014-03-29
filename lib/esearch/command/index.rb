@@ -60,7 +60,7 @@ module Esearch
           Request.post(context_path.join('_refresh'))
         end
 
-      end
-    end
-  end
-end
+      end # Delete
+    end # Index
+  end # Command
+end # Esearch

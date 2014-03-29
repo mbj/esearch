@@ -21,8 +21,8 @@ module Esearch
           Request.get('/_cluster/health', {}, options)
         end
 
-      end
+      end # Health
 
-    end
-  end
-end
+    end # Cluster
+  end # Command
+end # Esearch

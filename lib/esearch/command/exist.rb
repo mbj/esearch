@@ -32,6 +32,6 @@ module Esearch
         Request.head(context_path)
       end
 
-    end
-  end
-end
+    end # Exists
+  end # Command
+end # Esearch

@@ -160,5 +160,5 @@ module Esearch
     end
     memoize :response
 
-  end
-end
+  end # Command
+end # Esearch

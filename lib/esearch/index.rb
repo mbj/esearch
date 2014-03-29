@@ -57,5 +57,5 @@ module Esearch
     end
     memoize :path
 
-  end
-end
+  end # Index
+end # Esearch

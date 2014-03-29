@@ -57,7 +57,7 @@ module Esearch
         #
         expose_primitive(:mean)
 
-      end
-    end
-  end
-end
+      end # Range
+    end # Aspect
+  end # Presenter
+end # Esearch

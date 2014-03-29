@@ -13,7 +13,7 @@ module Esearch
         #
         expose_primitive(:term, :value)
 
-      end
-    end
-  end
-end
+      end # Term
+    end # Aspect
+  end # Presenter
+end # Esearch

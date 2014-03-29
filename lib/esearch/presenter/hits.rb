@@ -54,6 +54,6 @@ module Esearch
       expose_primitive(:hits)
       private :hits
 
-    end
-  end
-end
+    end # Hits
+  end # Presenter
+end # Esearch

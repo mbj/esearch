@@ -19,7 +19,7 @@ module Esearch
         Command::Exist.run(self)
       end
 
-    end
+    end # Exist
 
     # Mixin that adds document operations
     module Document
@@ -63,7 +63,7 @@ module Esearch
         Command::Document::Index::Update.run(self, document, options)
       end
 
-    end
+    end # Document
 
     # Mixin that adds index commands
     module Index
@@ -88,7 +88,7 @@ module Esearch
         Command::Index::Status.run(self)
       end
 
-    end
+    end # Index
 
     # Mixin for search command
     module Search
@@ -105,7 +105,7 @@ module Esearch
         Command::Search.run(self, query)
       end
 
-    end
+    end #sEarch
 
-  end
-end
+  end # Mixin
+end # Esearch

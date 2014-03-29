@@ -19,6 +19,6 @@ module Esearch
         Request.get(context_path.join('_status'))
       end
 
-    end
-  end
-end
+    end # Status
+  end # Command
+end # Esearch

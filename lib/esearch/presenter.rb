@@ -39,5 +39,5 @@ module Esearch
     end
     private_class_method :expose_primitive
 
-  end
-end
+  end # Presenter
+end # Esearch

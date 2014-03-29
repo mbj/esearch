@@ -80,5 +80,5 @@ module Esearch
       new(Connection.build(*args))
     end
 
-  end
-end
+  end # Cluster
+end # Esearch

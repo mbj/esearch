@@ -31,5 +31,5 @@ module Esearch
       response
     end
 
-  end
-end
+  end # Connection
+end # Esearch
