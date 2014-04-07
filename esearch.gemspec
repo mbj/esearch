@@ -5,9 +5,9 @@ Gem::Specification.new do |gem|
   gem.version     = '0.2.2'
   gem.authors     = [ 'Markus Schirp' ]
   gem.email       = [ 'mbj@schirp-dso.com' ]
-  gem.description = 'Esearch driver for ruby'
+  gem.description = 'Elasticsearch driver for ruby'
   gem.summary     = gem.description
-  gem.homepage    = 'https://github.com/mbj/elasticsearch'
+  gem.homepage    = 'https://github.com/mbj/esearch'
   gem.license     = 'MIT'
 
   gem.require_paths    = [ 'lib' ]
