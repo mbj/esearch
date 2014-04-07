@@ -50,7 +50,7 @@ describe Esearch::Presenter::Facet do
       }
     end
 
-    it { should eql([ DummyAspect.new('a'), DummyAspect.new('b') ]) }
+    it { should eql([DummyAspect.new('a'), DummyAspect.new('b')]) }
 
     it_should_behave_like 'an idempotent method'
   end
