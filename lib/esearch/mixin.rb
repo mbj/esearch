@@ -107,7 +107,7 @@ module Esearch
         Command::Search.run(self, query)
       end
 
-    end #sEarch
+    end # Search
 
   end # Mixin
 end # Esearch
