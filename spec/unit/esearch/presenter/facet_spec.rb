@@ -46,10 +46,7 @@ describe Esearch::Presenter::Facet do
 
     let(:raw) do
       {
-        'foo' => [
-          'a',
-          'b'
-        ]
+        'foo' => %w[a b]
       }
     end
 
