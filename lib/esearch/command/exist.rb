@@ -19,7 +19,7 @@ module Esearch
       #
       def result
         assert_success
-        response.status == 200
+        response.status.equal?(200)
       end
 
     private

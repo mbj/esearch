@@ -68,7 +68,7 @@ module Esearch
         #
         def result
           assert_success
-          if response.status == 200
+          if response.status.equal?(200)
             presenter.new(parsed_json)
           end
         end
